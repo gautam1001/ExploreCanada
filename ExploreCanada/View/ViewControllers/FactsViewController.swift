@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FactsViewController: UIViewController {
     
-    
+    //MARK:  Controller Life cycle Methods
     override func loadView() {
         super.loadView()
         self.view.backgroundColor =  .white
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
