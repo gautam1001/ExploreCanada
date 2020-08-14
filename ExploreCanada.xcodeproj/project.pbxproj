@@ -99,13 +99,15 @@
 		8F1E06AB24E7151800E00AA0 /* ExploreCanada */ = {
 			isa = PBXGroup;
 			children = (
-				8F1E06AC24E7151800E00AA0 /* AppDelegate.swift */,
-				8F1E06AE24E7151800E00AA0 /* SceneDelegate.swift */,
-				8F1E06B024E7151800E00AA0 /* ViewController.swift */,
+				8F1E06DC24E7167400E00AA0 /* ApplicationDelegates */,
+				8F1E06DF24E716C500E00AA0 /* Model */,
+				8F1E06DD24E716A100E00AA0 /* View */,
+				8F1E06DE24E716B400E00AA0 /* ViewModel */,
+				8F1E06E324E7194E00E00AA0 /* Services */,
+				8F1E06E524E719BF00E00AA0 /* Library */,
+				8F1E06E024E716E200E00AA0 /* Resources */,
 				8F1E06B224E7151800E00AA0 /* Main.storyboard */,
-				8F1E06B524E7151A00E00AA0 /* Assets.xcassets */,
 				8F1E06B724E7151A00E00AA0 /* LaunchScreen.storyboard */,
-				8F1E06BA24E7151A00E00AA0 /* Info.plist */,
 			);
 			path = ExploreCanada;
 			sourceTree = "<group>";
@@ -126,6 +128,100 @@
 				8F1E06D024E7151A00E00AA0 /* Info.plist */,
 			);
 			path = ExploreCanadaUITests;
+			sourceTree = "<group>";
+		};
+		8F1E06DC24E7167400E00AA0 /* ApplicationDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E06AE24E7151800E00AA0 /* SceneDelegate.swift */,
+				8F1E06AC24E7151800E00AA0 /* AppDelegate.swift */,
+			);
+			path = ApplicationDelegates;
+			sourceTree = "<group>";
+		};
+		8F1E06DD24E716A100E00AA0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E06B024E7151800E00AA0 /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8F1E06DE24E716B400E00AA0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8F1E06DF24E716C500E00AA0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8F1E06E024E716E200E00AA0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E06E224E7173100E00AA0 /* Plists */,
+				8F1E06E124E716ED00E00AA0 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8F1E06E124E716ED00E00AA0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E06B524E7151A00E00AA0 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		8F1E06E224E7173100E00AA0 /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E06BA24E7151A00E00AA0 /* Info.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
+		8F1E06E324E7194E00E00AA0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E06E424E7196500E00AA0 /* Network */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8F1E06E424E7196500E00AA0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8F1E06E524E719BF00E00AA0 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E06E724E71A1600E00AA0 /* Utilities */,
+				8F1E06E624E719D100E00AA0 /* Extensions */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		8F1E06E624E719D100E00AA0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8F1E06E724E71A1600E00AA0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,7 +531,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ExploreCanada/Info.plist;
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Resources/Plists/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +549,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = ExploreCanada/Info.plist;
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Resources/Plists/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
