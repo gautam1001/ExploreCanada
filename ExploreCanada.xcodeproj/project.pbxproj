@@ -23,7 +23,6 @@
 		8F1E070124E7BFFA00E00AA0 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06F924E7BFF900E00AA0 /* HTTPStatusCode.swift */; };
 		8F1E070224E7BFFA00E00AA0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FA24E7BFF900E00AA0 /* Response.swift */; };
 		8F1E070324E7BFFA00E00AA0 /* Dictionary+URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FB24E7BFF900E00AA0 /* Dictionary+URLQueryItem.swift */; };
-		8F1E070424E7BFFA00E00AA0 /* NSError+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FC24E7BFF900E00AA0 /* NSError+Network.swift */; };
 		8F1E070524E7BFFA00E00AA0 /* URLComponents+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FD24E7BFF900E00AA0 /* URLComponents+Addition.swift */; };
 		8F1E070624E7BFFA00E00AA0 /* HTTPRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FE24E7BFFA00E00AA0 /* HTTPRequestManager.swift */; };
 		8F1E070724E7BFFA00E00AA0 /* URLRequest+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FF24E7BFFA00E00AA0 /* URLRequest+Addition.swift */; };
@@ -81,7 +80,6 @@
 		8F1E06F924E7BFF900E00AA0 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
 		8F1E06FA24E7BFF900E00AA0 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		8F1E06FB24E7BFF900E00AA0 /* Dictionary+URLQueryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+URLQueryItem.swift"; sourceTree = "<group>"; };
-		8F1E06FC24E7BFF900E00AA0 /* NSError+Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSError+Network.swift"; sourceTree = "<group>"; };
 		8F1E06FD24E7BFF900E00AA0 /* URLComponents+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLComponents+Addition.swift"; sourceTree = "<group>"; };
 		8F1E06FE24E7BFFA00E00AA0 /* HTTPRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestManager.swift; sourceTree = "<group>"; };
 		8F1E06FF24E7BFFA00E00AA0 /* URLRequest+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+Addition.swift"; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 			children = (
 				8F1E071E24E801BB00E00AA0 /* Collections */,
 				8F1E072C24E8545B00E00AA0 /* UIView */,
-				8F1E071D24E801A100E00AA0 /* Error */,
 				8F1E071C24E8015700E00AA0 /* URLRequest */,
 				8F1E06ED24E7249F00E00AA0 /* UILabel */,
 				8F1E06EA24E7231400E00AA0 /* UIImageView */,
@@ -358,14 +355,6 @@
 				8F1E06FF24E7BFFA00E00AA0 /* URLRequest+Addition.swift */,
 			);
 			path = URLRequest;
-			sourceTree = "<group>";
-		};
-		8F1E071D24E801A100E00AA0 /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				8F1E06FC24E7BFF900E00AA0 /* NSError+Network.swift */,
-			);
-			path = Error;
 			sourceTree = "<group>";
 		};
 		8F1E071E24E801BB00E00AA0 /* Collections */ = {
@@ -528,7 +517,6 @@
 				8F1E070324E7BFFA00E00AA0 /* Dictionary+URLQueryItem.swift in Sources */,
 				8F1E06EF24E7250E00E00AA0 /* UILabel+Addition.swift in Sources */,
 				8F1E072524E824F300E00AA0 /* NetworkError.swift in Sources */,
-				8F1E070424E7BFFA00E00AA0 /* NSError+Network.swift in Sources */,
 				8F1E06F224E72B9D00E00AA0 /* FactCell.swift in Sources */,
 				8F1E072124E8021C00E00AA0 /* UIImageView+Download.swift in Sources */,
 				8F1E070624E7BFFA00E00AA0 /* HTTPRequestManager.swift in Sources */,

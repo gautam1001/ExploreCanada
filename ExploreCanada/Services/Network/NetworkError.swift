@@ -20,7 +20,7 @@ extension NetworkError: LocalizedError {
         case .badUrl(let message):
             return NSLocalizedString(message, comment: "Bad url")
         case .reachability(let message):
-            return NSLocalizedString(message, comment: "Unable to reach internet")
+            return NSLocalizedString(message, comment: "Network not available")
         case .requestTimedOut(let message):
             return NSLocalizedString(message, comment: "Request timed out")
         case .other(let message):

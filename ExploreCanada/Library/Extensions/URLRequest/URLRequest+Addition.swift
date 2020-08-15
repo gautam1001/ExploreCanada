@@ -81,14 +81,13 @@ extension URLRequest {
         if method == .GET, let obj = jsonDictionary {
             var urlComponents = URLComponents(string: url.absoluteString)
             urlComponents?.setQueryItems(with: obj)
-            //print(urlComponents?.url?.absoluteString)
             mutableURLRequest.url = urlComponents?.url
         }else if method != .GET, let obj = jsonDictionary {
             do {
                 let data: Data = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                 mutableURLRequest.httpBody = data // Okay, the `json` is here, let's get the value for 'success' out of it
-            } catch let parseError {
-                print("Error could not parse JSON.\n \(parseError)") // Log the error thrown by `JSONObjectWithData`
+            } catch let serializeError {
+                print("Error could not parse JSON.\n \(serializeError)") // Log the error thrown by `JSONObjectWithData`
             }
         }
         return mutableURLRequest

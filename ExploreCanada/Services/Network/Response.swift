@@ -9,20 +9,11 @@ import UIKit
 
 /// Response used to store URL response.
 class Response {
-
-    // MARK: Declaration for string constants to be used to decode and also serialize.
-
-    private struct SerializationKeys {
-        static let statusCode = "statusCode"
-        static let message = "message"
-        static let success = "success"
-    }
-
     // The URL request sent to the server.
     var request: URLRequest?
 
     // The server's response to the URL request.
-    var response: HTTPURLResponse?
+    private var response: HTTPURLResponse?
 
     // The data returned by the server.
     var data: Data?
@@ -33,7 +24,6 @@ class Response {
     // The dictionary received after parsing the received data.
     var resultJSON: Dictionary<String, Any>?
    
-    //private var jsonSuccessCheck:Bool = true
     // MARK: - Initialization Methods
 
     init(_ request: URLRequest, _ response: HTTPURLResponse?, _ responseData: Data?, error: Error?) {
@@ -45,31 +35,15 @@ class Response {
             do {
                 // Try parsing some valid JSON
                 resultJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? Dictionary
-                if !success() {
-                    self.error = errorGenerator(responseCode(), message())
-                }
-            } catch let error as NSError {
+            } catch let parsingError {
                 // Catxch fires here, with an NSErrro being thrown from the JSONObjectWithData method
-                self.error = error
+                self.error = parsingError
             }
+        }else{
+            self.error = error
         }
     }
-
-    // MARK: - Getters Methods
-
-    /**
-     The response status after parsing the received data.
-
-     - returns: true if success code return
-     */
-    func success() -> Bool {
-        if  let resultJSON = resultJSON, let status = resultJSON[SerializationKeys.success] {
-            return (status as AnyObject).boolValue
-        }
-
-        return true
-    }
-
+    
     /**
      The response string from the received data.
 
@@ -88,35 +62,11 @@ class Response {
 
      - returns: get response code from api response data.
      */
-    func responseCode() -> Int {
-        if let resultJSON = resultJSON, let code = resultJSON[SerializationKeys.statusCode] as? Int {
-            return code
-        }else if let response = self.response {
+    var statusCode: Int {
+        if let response = self.response {
             return response.statusCode
         }
         return -1 // Unknown response code.
     }
 
-    /**
-     The message received after parsing the received data.
-
-     - returns: response message from api response data.
-     */
-    func message() -> String {
-        if let resultJSON = resultJSON, let message = resultJSON[SerializationKeys.message] as? String {
-            return message
-        }
-        return (success()) ? NSLocalizedString("Action performed successfully.", comment: "Action performed successfully.") : NSLocalizedString("An error occurred while performing this request. Please try again later.", comment: "An error occurred while performing this request. Please try again later.")
-    }
-
-    /**
-     The responseError received after parsing the received data.
-
-     - returns: error if api failed.
-     */
-
-    fileprivate func errorGenerator(_ code: Int, _ message: String) -> Error {
-        let errorDictionary = [NSLocalizedFailureReasonErrorKey: NSLocalizedString("Error", comment: "Error"), NSLocalizedDescriptionKey: message]
-        return NSError(domain: "com.httprequest", code: code, userInfo: errorDictionary)
-    }
 }

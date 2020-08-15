@@ -48,11 +48,11 @@ extension APIService {
         return completion(.failure(.badUrl(string: "Bad url")))
      }
      httpClient.performRequest(httpRequest) { response in
-            if response.responseCode() == HTTPStatusCode.requestTimeout.rawValue {
+            if response.statusCode == HTTPStatusCode.requestTimeout.rawValue {
                 completion(.failure(.requestTimedOut(string: "Request timed out")))
             } else if let error = response.error{
                 completion(.failure(.other(string: error.localizedDescription)))
-         } else if response.success(), let responseJson = response.resultJSON {
+         } else if let responseJson = response.resultJSON {
                 completion(.success(responseJson))
          }
         }
