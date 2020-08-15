@@ -22,7 +22,7 @@ final class ImageDownloader: NSObject {
     }
     
     public static func downloadImage(url: URL,
-                                     completion: @escaping (ResultImage<Data>) -> Void)
+                                     completion: @escaping (Result<Data,Error>) -> Void)
     {
         
         ImageDownloader.getData(url: url) { data, response, error in

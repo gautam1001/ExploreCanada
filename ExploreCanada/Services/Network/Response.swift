@@ -1,5 +1,5 @@
 //
-//  ApiResponse.swift
+//  Response.swift
 //
 //  Created by Prashant Gautam on 12/03/19.
 //  Copyright © 2019. All rights reserved.

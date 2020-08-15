@@ -36,6 +36,8 @@
 		8F1E071824E7F29400E00AA0 /* FactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E071724E7F29400E00AA0 /* FactViewModel.swift */; };
 		8F1E071B24E8007700E00AA0 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E071A24E8007700E00AA0 /* ImageDownloader.swift */; };
 		8F1E072124E8021C00E00AA0 /* UIImageView+Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E072024E8021C00E00AA0 /* UIImageView+Download.swift */; };
+		8F1E072324E8192D00E00AA0 /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E072224E8192D00E00AA0 /* APIResult.swift */; };
+		8F1E072524E824F300E00AA0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E072424E824F300E00AA0 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		8F1E071724E7F29400E00AA0 /* FactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactViewModel.swift; sourceTree = "<group>"; };
 		8F1E071A24E8007700E00AA0 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		8F1E072024E8021C00E00AA0 /* UIImageView+Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Download.swift"; sourceTree = "<group>"; };
+		8F1E072224E8192D00E00AA0 /* APIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
+		8F1E072424E824F300E00AA0 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				8F1E070924E7C33F00E00AA0 /* Reachability.swift */,
+				8F1E072424E824F300E00AA0 /* Error.swift */,
 				8F1E06F724E7BBDE00E00AA0 /* RequestBuilder.swift */,
 				8F1E070024E7BFFA00E00AA0 /* APIService.swift */,
 				8F1E06FE24E7BFFA00E00AA0 /* HTTPRequestManager.swift */,
@@ -281,6 +286,7 @@
 			children = (
 				8F1E071124E7EAAE00E00AA0 /* MulticastDelegate.swift */,
 				8F1E070F24E7CFFA00E00AA0 /* JsonParser.swift */,
+				8F1E072224E8192D00E00AA0 /* APIResult.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -500,8 +506,10 @@
 				8F1E070824E7BFFA00E00AA0 /* APIService.swift in Sources */,
 				8F1E070124E7BFFA00E00AA0 /* HTTPStatusCode.swift in Sources */,
 				8F1E071224E7EAAE00E00AA0 /* MulticastDelegate.swift in Sources */,
+				8F1E072324E8192D00E00AA0 /* APIResult.swift in Sources */,
 				8F1E070324E7BFFA00E00AA0 /* Dictionary+URLQueryItem.swift in Sources */,
 				8F1E06EF24E7250E00E00AA0 /* UILabel+Addition.swift in Sources */,
+				8F1E072524E824F300E00AA0 /* Error.swift in Sources */,
 				8F1E070424E7BFFA00E00AA0 /* NSError+Network.swift in Sources */,
 				8F1E06F224E72B9D00E00AA0 /* FactCell.swift in Sources */,
 				8F1E072124E8021C00E00AA0 /* UIImageView+Download.swift in Sources */,
