@@ -47,7 +47,7 @@ class AboutViewModel {
     
   }
     
-    //MARK: Getter setter for cart items in the list
+    //MARK: Getter setter for fact items in the list
     subscript(_ index: Int) -> FactViewModel? {
         get { return _factViewModels?[index] }
         set {
