@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FactsViewController.swift
 //  ExploreCanada
 //
 //  Created by Prashant on 15/08/20.
@@ -19,6 +19,7 @@ class FactsViewController: UIViewController {
                                  for: UIControl.Event.valueChanged)
         return refreshControl
     }()
+    
     //MARK:  Controller Life cycle Methods
     override func loadView() {
         super.loadView()
