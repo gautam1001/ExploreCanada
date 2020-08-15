@@ -11,8 +11,8 @@ import UIKit
 extension UIImageView {
     func circleShaped(){
         self.contentMode = .scaleAspectFit // image content fits in the space best suited for the image and will never be strecthed vertially and horizontally
-        self.backgroundColor = UIColor.white
-        self.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
+        self.backgroundColor = .white
+        self.translatesAutoresizingMaskIntoConstraints = false // Enable autolayouts
         self.layer.cornerRadius = 40
         self.clipsToBounds = true
     }

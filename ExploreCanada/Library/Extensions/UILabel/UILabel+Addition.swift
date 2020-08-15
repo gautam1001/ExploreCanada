@@ -13,7 +13,7 @@ extension UILabel {
     /// Configure label as per application
     /// - Parameter fontSize: font size
     /// - Parameter numberOfLines: number of lines allowed
-    func configure(with fontSize: CGFloat = 14,numberOfLines: Int){
+    func configure(fontSize: CGFloat = 14,numberOfLines: Int){
         self.font = UIFont.systemFont(ofSize: fontSize)
         self.numberOfLines = numberOfLines
         self.translatesAutoresizingMaskIntoConstraints = false

@@ -23,7 +23,8 @@ class FactsViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.backgroundColor =  .white
-        safeArea = view.layoutMarginsGuide
+        self.safeArea = view.layoutMarginsGuide
+        self.configureTableView()
     }
     
     override func viewDidLoad() {
@@ -32,20 +33,20 @@ class FactsViewController: UIViewController {
     }
     
     private func configureTableView() {
-          view.addSubview(tableView)
-        tableView.dataSource = self
+        self.view.addSubview(tableView)
+        self.tableView.dataSource = self
           //Add Top,Leading,Bottom,Trailing Constraint to Safe Area
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        self.tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        self.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         //View added in the bottom to avoid showing empty space with extra cells ...
-        tableView.tableFooterView = UIView()
+        self.tableView.tableFooterView = UIView()
         
         //Register TableViewCell
-        tableView.register(FactCell.self, forCellReuseIdentifier: FactCell.identifier)
+        self.tableView.register(FactCell.self, forCellReuseIdentifier: FactCell.identifier)
         
         //Dynamic height of TableviewCell ...
         tableView.estimatedRowHeight = 100.0
@@ -53,11 +54,15 @@ class FactsViewController: UIViewController {
         
         //Add PullToRefresh control ...
         tableView.addSubview(self.refreshControl)
-
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
        }
     
     @objc func refreshAction(_ sender: Any?) {
         self.title = "Refreshing ..."
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.refreshControl.endRefreshing()
+            self.title = "About Canada"
+        })
     }
 }
 
@@ -68,8 +73,9 @@ extension FactsViewController: UITableViewDataSource, UITableViewDelegate {
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let  cell = tableView.dequeueReusableCell(withIdentifier:  FactCell.identifier, for: indexPath) as! FactCell
-        return cell
+        let factCell = tableView.dequeueReusableCell(withIdentifier:  FactCell.identifier, for: indexPath) as! FactCell
+        factCell.configure()
+        return factCell
     }
 }
 
