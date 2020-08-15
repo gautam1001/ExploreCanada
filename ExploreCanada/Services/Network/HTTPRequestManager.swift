@@ -98,7 +98,7 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
      - parameter completionHandler: handler
      */
     func performRequest(_ request: URLRequest, userInfo _: NSDictionary? = nil, completionHandler: @escaping (_ response: Response) -> Void) {
-        guard isNetworkReachable() else {
+        guard isNetworkAvaiblable() else {
             let res = Response(request, nil, nil, error: NSError.errorForNoNetwork())
             completionHandler(res)
             return // do not proceed if user is not connected to internet
@@ -336,27 +336,12 @@ extension HTTPRequestManager {
     }
 
     func isNetworkAvaiblable() -> Bool {
-        guard isNetworkReachable() else {
-            return false
+        if let reachability = Reachability() {
+           return reachability.isReachable
         }
         return true
     }
     
 }
 
-// MARK: - Network reachable methods
-
-extension HTTPRequestManager {
-    /**
-     Check wheather network is reachable.
-
-     - returns: true is reachable otherwise false.
-     */
-    fileprivate func isNetworkReachable() -> Bool {
-          if let reachability = Reachability() {
-                return reachability.isReachable
-              }
-        return true
-    }
-}
 
