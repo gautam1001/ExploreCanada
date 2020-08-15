@@ -242,8 +242,8 @@
 		8F1E06E324E7194E00E00AA0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8F1E071924E8005B00E00AA0 /* DownloadManager */,
 				8F1E06E424E7196500E00AA0 /* Network */,
+				8F1E071924E8005B00E00AA0 /* DownloadManager */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -252,10 +252,10 @@
 			isa = PBXGroup;
 			children = (
 				8F1E070924E7C33F00E00AA0 /* Reachability.swift */,
-				8F1E072424E824F300E00AA0 /* NetworkError.swift */,
-				8F1E06F724E7BBDE00E00AA0 /* RequestBuilder.swift */,
 				8F1E070024E7BFFA00E00AA0 /* APIService.swift */,
 				8F1E06FE24E7BFFA00E00AA0 /* HTTPRequestManager.swift */,
+				8F1E06F724E7BBDE00E00AA0 /* RequestBuilder.swift */,
+				8F1E072424E824F300E00AA0 /* NetworkError.swift */,
 				8F1E06FA24E7BFF900E00AA0 /* Response.swift */,
 				8F1E06F924E7BFF900E00AA0 /* HTTPStatusCode.swift */,
 			);
@@ -276,11 +276,11 @@
 			isa = PBXGroup;
 			children = (
 				8F1E071E24E801BB00E00AA0 /* Collections */,
+				8F1E072C24E8545B00E00AA0 /* UIView */,
 				8F1E071D24E801A100E00AA0 /* Error */,
 				8F1E071C24E8015700E00AA0 /* URLRequest */,
 				8F1E06ED24E7249F00E00AA0 /* UILabel */,
 				8F1E06EA24E7231400E00AA0 /* UIImageView */,
-				8F1E072A24E8499C00E00AA0 /* UIVIew+Layout.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -382,6 +382,14 @@
 				8F1E072824E8329400E00AA0 /* FactsTableView.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		8F1E072C24E8545B00E00AA0 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E072A24E8499C00E00AA0 /* UIVIew+Layout.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

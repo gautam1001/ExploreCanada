@@ -1,6 +1,5 @@
 //
 //  MulticastDelegate.swift
-//  eCommerceApp
 //
 //  Created by Prashant on 18/06/20.
 //  Copyright © 2020 Prashant. All rights reserved.

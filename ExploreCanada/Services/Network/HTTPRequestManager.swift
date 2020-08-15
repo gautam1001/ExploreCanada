@@ -36,15 +36,6 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
     
     private override init() {}
 
-    // MARK: - Class Methods
-
-    fileprivate func beginNetworkActivity() {
-        networkFetchingCount += 1
-        DispatchQueue.main.async {
-            //UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        }
-    }
-
     func setCertficateName(_ text: String){
         self.certificateFileName = text
     }
@@ -52,21 +43,7 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
     func setSSLPinning(_ required: Bool){
         self.isSSLPinningEnabled = required
     }
-    /**
-     Call to hide network indicator in Status Bar
-     */
-    fileprivate func endNetworkActivity() {
-        if networkFetchingCount > 0 {
-            networkFetchingCount -= 1
-        }
-
-        if networkFetchingCount == 0 {
-            DispatchQueue.main.async {
-                //UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-
+    
     // MARK: - Public Methods
 
     /**
@@ -92,58 +69,17 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
      - parameter userInfo:          user information
      - parameter completionHandler: completion handler
      */
-    fileprivate func performSessionDataTaskWithRequest(_ request: URLRequest, userInfo _: NSDictionary? = nil, completionHandler: @escaping (_ response: Response) -> Void) {
-        beginNetworkActivity()
+    fileprivate func performSessionDataTaskWithRequest(_ request: URLRequest, completionHandler: @escaping (_ response: Response) -> Void) {
         addRequestURL(request.url!)
-       
         urlSession.dataTask(with: request, completionHandler: { data, response, error in
             //var responseError: Error? = error
             var apiResponse: Response
-//            if responseError != nil {
-//                apiResponse = Response(request, response as? HTTPURLResponse, responseError!, data: data)
-//                self.logError(apiResponse.error!, request: request)
-//            } else {
-            
             apiResponse = Response(request, response as? HTTPURLResponse, data, error: error)
-                //self.logResponse(data!, forRequest: request)
-            //}
-
+    
             self.removeRequestedURL(request.url!)
-
             DispatchQueue.main.async(execute: { () -> Void in
-                self.endNetworkActivity()
                 completionHandler(apiResponse)
             })
-        }).resume()
-    }
-
-    /**
-     Perform session data task
-
-     - parameter request:           url request
-     - parameter userInfo:          user information
-     - parameter completionHandler: completion handler
-     */
-    func download(_ request: URLRequest, completionHandler: @escaping (_ data: Data?, _ error: Error?) -> Void) {
-        addRequestURL(request.url!)
-
-        urlSession.dataTask(with: request, completionHandler: { data, response, error in
-            var responseError: Error? = error
-            // handle http response status
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode > 299 {
-                    responseError = NSError.errorForHTTPStatus(httpResponse.statusCode)
-                }
-            }
-
-            if responseError != nil {
-                completionHandler(data, responseError)
-            } else {
-                completionHandler(data, error)
-            }
-
-            self.removeRequestedURL(request.url!)
-
         }).resume()
     }
     

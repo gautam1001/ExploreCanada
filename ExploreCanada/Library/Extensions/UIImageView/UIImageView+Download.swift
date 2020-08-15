@@ -8,32 +8,31 @@
 
 import UIKit
 
-extension UIImageView{
-    func setImageFromUrl(urlSting: String) {
-        guard let url = URL(string: urlSting) else { return }
-        image = nil//image-preview
+extension UIImageView {
+    
+    func setImage(with urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        //image = nil
         
-        if let cacheImage = imageCache.object(forKey: urlSting as AnyObject) {
-            image = cacheImage as? UIImage
+        if let cachedImage = imageCache.object(forKey: urlString as AnyObject) {
+            image = cachedImage as? UIImage
             return
         }
-        self.image = UIImage(named: "image-preview")
+        self.image = UIImage(named: "image-preview") //Preview Image
         ImageDownloader.downloadImage(url: url) { [weak self] result in
             guard let weakSelf = self else { return }
             switch result {
             case .success(let data):
-                guard let imageToCache = UIImage(data: data) else { return }
-                imageCache.setObject(imageToCache, forKey: urlSting as AnyObject)
+                guard let newImage = UIImage(data: data) else { return }
+                imageCache.setObject(newImage, forKey: urlString as AnyObject) // Save image to cache
                 weakSelf.image = UIImage(data: data)
             case .failure(_):
                 DispatchQueue.main.async() {
-                   weakSelf.backgroundColor = UIColor.lightGray
+                    weakSelf.backgroundColor = UIColor.lightGray
                     weakSelf.image = UIImage(named: "noimage")
                 }
             }
-            
         }
-        
     }
 
 }

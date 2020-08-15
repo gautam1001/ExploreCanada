@@ -75,8 +75,8 @@ class FactCell: UITableViewCell {
     }
     
     func configure(with viewModel:FactViewModel?){
-        if let imageUrl = viewModel?.imageHref {
-            self.factImageView.setImageFromUrl(urlSting: imageUrl)
+        if let imageHref = viewModel?.imageHref {
+            self.factImageView.setImage(with: imageHref)
         }
         self.titleLabel.text = viewModel?.title
         self.descriptionLabel.text = viewModel?.description

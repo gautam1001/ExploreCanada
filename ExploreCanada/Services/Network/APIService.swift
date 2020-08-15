@@ -62,10 +62,8 @@ extension APIService {
         guard let url = URL(string: request.path) else { return }
         httpClient.cancelRequestForURL(url)
     }
-
-    // MARK: - Download request
-
-    func download(_ request: URLRequest, handler: @escaping (_ data: Data?, _ error: Error?) -> Void) {
-        httpClient.download(request, completionHandler: handler)
+    
+    func cancelAllRequests(){
+        httpClient.cancelAllRequests()
     }
 }
