@@ -15,10 +15,11 @@ class AboutViewModel {
     var factCounts:Int{
         return _factViewModels?.count ?? 0
     }
+    
     private init() {}
     
-    init(with dict:[String:Any]) {
-        guard let about =  JsonParser.parse(About.self, dict: dict) else {return}
+    init(with data:Data) {
+        guard let about =  JsonParser.parse(About.self, data: data) else {return}
         self._about = about
         self.populateFacts()
     }

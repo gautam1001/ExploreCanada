@@ -30,17 +30,17 @@ class FactsTableView: UITableView {
         showsVerticalScrollIndicator = false
         refreshControl = _refreshControl
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     @objc private func refreshAction(_ sender: Any?) {
-           //Delaying of 1 secconds is added because network api call is too fast and user not able to see the 'refreshing...' title
-           DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-                self?.refreshHandler?()
-           }
-       }
+        //Delaying of 1 secconds is added because network api call is too fast and user not able to see the 'refreshing...' title
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.refreshHandler?()
+        }
+    }
     
     func endRefreshing() {
         _refreshControl.endRefreshing()

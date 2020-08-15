@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class FactListViewModel {
     
     enum FactListResult<String,Error> {
@@ -32,16 +31,14 @@ class FactListViewModel {
       updateHandler =  handler
         let request = RequestBuilder.getFacts
         APIService.shared.performRequest(request) { [weak self] result in
-            switch result {
-            case .success(let jsonDict):
-                if let jsonDict = jsonDict {
-                    self?._aboutViewModel = AboutViewModel(with: jsonDict)
-                    self?.updateHandler?(.success(self?._aboutViewModel?.screenTitle ?? ""))
-                }
-            case .failure(let error):
-                self?.updateHandler?(.failure(error))
-            }
-        }
+                   switch result {
+                   case .success(let data):
+                           self?._aboutViewModel = AboutViewModel(with: data)
+                           self?.updateHandler?(.success(self?._aboutViewModel?.screenTitle ?? ""))
+                   case .failure(let error):
+                       self?.updateHandler?(.failure(error))
+                   }
+               }
     }
     
     //MARK: Getter setter for factviewmodel items in the list

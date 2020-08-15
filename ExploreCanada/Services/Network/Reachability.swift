@@ -90,9 +90,9 @@ public class Reachability {
     
     fileprivate var isRunningOnDevice: Bool = {
         #if targetEnvironment(simulator)
-            return false
+        return false
         #else
-            return true
+        return true
         #endif
     }()
     
@@ -240,9 +240,9 @@ fileprivate extension Reachability {
     
     var isOnWWANFlagSet: Bool {
         #if os(iOS)
-            return reachabilityFlags.contains(.isWWAN)
+        return reachabilityFlags.contains(.isWWAN)
         #else
-            return false
+        return false
         #endif
     }
     var isReachableFlagSet: Bool {

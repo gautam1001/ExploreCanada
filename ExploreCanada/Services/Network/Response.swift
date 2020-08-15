@@ -11,21 +11,21 @@ import UIKit
 class Response {
     // The URL request sent to the server.
     var request: URLRequest?
-
+    
     // The server's response to the URL request.
     private var response: HTTPURLResponse?
-
+    
     // The data returned by the server.
     var data: Data?
-
+    
     // The error received during the request.
     var error: Error?
-
+    
     // The dictionary received after parsing the received data.
     var resultJSON: Dictionary<String, Any>?
-   
+    
     // MARK: - Initialization Methods
-
+    
     init(_ request: URLRequest, _ response: HTTPURLResponse?, _ responseData: Data?, error: Error?) {
         self.request = request
         self.response = response
@@ -46,20 +46,20 @@ class Response {
     
     /**
      The response string from the received data.
-
+     
      - returns: Returns the response as a string
      */
     func outputText() -> String? {
         guard let data = data else {
             return nil
         }
-
+        
         return String(data: data as Data, encoding: String.Encoding.utf8)
     }
-
+    
     /**
      The responseCode received after parsing the received data.
-
+     
      - returns: get response code from api response data.
      */
     var statusCode: Int {
@@ -68,5 +68,5 @@ class Response {
         }
         return -1 // Unknown response code.
     }
-
+    
 }

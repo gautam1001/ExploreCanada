@@ -41,7 +41,7 @@ extension RequestBuilder {
 
 extension RequestBuilder {
     
-   public var url:URL? {
+    public var url:URL? {
         guard let url = URL(string: path) else { return nil}
         return url
     }
@@ -50,7 +50,7 @@ extension RequestBuilder {
 extension RequestBuilder {
     var parameters: [String: Any] {
         switch self {
-            case .getFacts:
+        case .getFacts:
             return [:]
         }
     }
