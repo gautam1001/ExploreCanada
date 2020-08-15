@@ -9,83 +9,55 @@
 import UIKit
 
 class FactsViewController: UIViewController {
-    private let tableView = UITableView()
-    private var safeArea: UILayoutGuide!
-    
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action:
-            #selector(FactsViewController.refreshAction(_:)),
-                                 for: UIControl.Event.valueChanged)
-        return refreshControl
-    }()
-    
-    let factListViewModel = FactListViewModel()
+    private var tableView : FactsTableView!
+    private let listViewModel = FactListViewModel()
     
     //MARK:  Controller Life cycle Methods
     override func loadView() {
         super.loadView()
         self.view.backgroundColor =  .white
-        self.safeArea = view.layoutMarginsGuide
         self.configureTableView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        factListViewModel.fetchFacts  { [weak self] title in
-            self?.tableView.reloadData()
-            self?.title = title
-        }
+        self.fetchFacts()
     }
     
+    //MARK:  Helper Methods
     private func configureTableView() {
+        self.tableView = FactsTableView(frame: view.bounds, style: .plain)
         self.view.addSubview(tableView)
-        //Add Top,Leading,Bottom,Trailing Constraint to Safe Area
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        self.tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        self.tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
-        self.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        //View added in the bottom to avoid showing empty space with extra cells ...
-        self.tableView.tableFooterView = UIView()
-        
+        self.tableView.addConstraints(with: view, safeAreaGuide: [.top])
         //Register TableViewCell
         self.tableView.register(FactCell.self, forCellReuseIdentifier: FactCell.identifier)
-        
-        //Set dynamic height of TableViewCell ...
-        self.tableView.estimatedRowHeight = 100.0
-        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.dataSource = self
-        //Pull To Refresh control ...
-        self.tableView.addSubview(self.refreshControl)
-        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    @objc func refreshAction(_ sender: Any?) {
-        self.title = "Refreshing ..."
-        //Delaying of 1 secconds is added because network api call is too fast and user not able to see the 'refreshing...' title
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            self?.factListViewModel.fetchFacts { [weak self] title in
-                self?.tableView.reloadData()
-                self?.title = title
-                self?.refreshControl.endRefreshing()
-            }
+        tableView.refreshHandler = {  [unowned self] in
+            self.fetchFacts()
         }
-        
+    }
+   
+    private func fetchFacts(){
+        listViewModel.fetch { [unowned self] result in
+            switch result {
+            case .success(let title): self.title = title
+            case .failure(let error): print(error.localizedDescription)
+            }
+            self.tableView.reloadData()
+            self.tableView.endRefreshing()
+        }
     }
 }
 
-extension FactsViewController: UITableViewDataSource, UITableViewDelegate {
-    
+extension FactsViewController: UITableViewDataSource {
+    //Datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return factListViewModel.count
+        return listViewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let factCell = tableView.dequeueReusableCell(withIdentifier:  FactCell.identifier, for: indexPath) as! FactCell
-        factCell.configure(with: factListViewModel[indexPath.row])
+        factCell.configure(with: listViewModel[indexPath.row])
         return factCell
     }
 }

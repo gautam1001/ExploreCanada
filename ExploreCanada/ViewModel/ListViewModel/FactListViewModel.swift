@@ -10,14 +10,15 @@ import Foundation
 
 
 class FactListViewModel {
+    
     enum FactListResult<String,Error> {
-        case success(string: String)
-        case failure(error: Error)
+        case success(String)
+        case failure(Error)
     }
-
+    
     private var _aboutViewModel : AboutViewModel?
     
-    typealias FactListUpdateHandler = (String?)->Void
+    typealias FactListUpdateHandler = ((FactListResult<String,Error>) -> Void)
     private var updateHandler: FactListUpdateHandler?
     
     var title:String?{
@@ -27,7 +28,7 @@ class FactListViewModel {
         return _aboutViewModel?.factCounts ?? 0
     }
     
-    func fetchFacts(_ handler: @escaping FactListUpdateHandler){
+    func fetch(_ handler: @escaping FactListUpdateHandler){
       updateHandler =  handler
         let request = RequestBuilder.getFacts
         APIService.shared.performRequest(request) { [weak self] result in
@@ -35,10 +36,10 @@ class FactListViewModel {
             case .success(let jsonDict):
                 if let jsonDict = jsonDict {
                     self?._aboutViewModel = AboutViewModel(with: jsonDict)
-                    self?.updateHandler?(self?._aboutViewModel?.screenTitle)
+                    self?.updateHandler?(.success(self?._aboutViewModel?.screenTitle ?? ""))
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.updateHandler?(.failure(error))
             }
         }
     }
