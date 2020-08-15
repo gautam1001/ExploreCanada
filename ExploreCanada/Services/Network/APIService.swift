@@ -11,13 +11,13 @@ public final class APIService {
     private let httpClient: HTTPRequestManager
     var isSSLPinningEnabled = false {
         willSet {
-            self.httpClient.isSSLPinningEnabled = newValue
+            self.httpClient.setSSLPinning(newValue)
         }
     }
     
     var certificateFileName = "" {
         willSet {
-            self.httpClient.certificateFileName = newValue
+            self.httpClient.setCertficateName(newValue)
         }
     }
     // MARK: - Singleton Instance
@@ -40,44 +40,7 @@ extension APIService {
         }
         return true
     }
-
-    /**
-     Method used to handle api response and based on the status it calls completion handler
-
-     - parameter response:   api response
-     - parameter completion: completion handler
-     */
-    /*func handleResponse(_ apiresponse: Response?, completion: (_ success: Bool, _ error: Error?) -> Void) {
-        if let response = apiresponse {
-            if response.responseCode() == HTTPStatusCode.requestTimeout.rawValue {
-                completion(false, response.error)
-            } else if response.success() {
-                completion(true, nil)
-            } else {
-                completion(false, response.error)
-            }
-        }
-    }*/
-
     // MARK: - Perform request
-
-    func perform(_ request: RequestBuilder, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
-        guard let url = request.url else {return}
-        let httpRequest = URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as NSDictionary?)
-        guard let _ = httpRequest.url else {
-            return completion(false,NSError.errorForInvalidURL())
-        }
-        httpClient.performRequest(httpRequest) { response in
-            if response.responseCode() == HTTPStatusCode.requestTimeout.rawValue {
-                completion(false, response.error)
-            } else if response.success() {
-                completion(true, nil)
-            } else {
-                completion(false, response.error)
-            }
-        }
-    }
-    
      func performRequest(_ request: RequestBuilder, completion: @escaping (_ result: [String: Any]?, _ error: Error?) -> Void) {
         guard let url = request.url else {return} 
         let httpRequest = URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as NSDictionary?)
@@ -94,24 +57,6 @@ extension APIService {
             }
            }
        }
-
-    func performRequestList(_ request: RequestBuilder, completion: @escaping (_ result: [[String: Any]]?, _ error: Error?) -> Void) {
-       guard let url = request.url else {return}
-        let httpRequest = URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as NSDictionary?)
-        guard let _ = httpRequest.url else {
-            return completion(nil,NSError.errorForInvalidURL())
-        }
-        httpClient.performRequest(httpRequest) { response in
-            if response.responseCode() == HTTPStatusCode.requestTimeout.rawValue {
-                completion(nil, response.error)
-            } else if response.success(), let responseData = response.resultJSON?["data"] as? [[String: Any]] {
-                completion(responseData, nil)
-            } else {
-                completion(nil, response.error)
-            }
-        }
-    }
-
     func cancelRequestForService(_ request: RequestBuilder) {
         guard let url = URL(string: request.path) else { return }
         httpClient.cancelRequestForURL(url)

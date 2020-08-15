@@ -29,6 +29,8 @@
 		8F1E070724E7BFFA00E00AA0 /* URLRequest+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FF24E7BFFA00E00AA0 /* URLRequest+Additions.swift */; };
 		8F1E070824E7BFFA00E00AA0 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E070024E7BFFA00E00AA0 /* APIService.swift */; };
 		8F1E070A24E7C33F00E00AA0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E070924E7C33F00E00AA0 /* Reachability.swift */; };
+		8F1E070E24E7CAA500E00AA0 /* FactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E070D24E7CAA500E00AA0 /* FactListViewModel.swift */; };
+		8F1E071024E7CFFA00E00AA0 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E070F24E7CFFA00E00AA0 /* JsonParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		8F1E06FF24E7BFFA00E00AA0 /* URLRequest+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+Additions.swift"; sourceTree = "<group>"; };
 		8F1E070024E7BFFA00E00AA0 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		8F1E070924E7C33F00E00AA0 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		8F1E070D24E7CAA500E00AA0 /* FactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListViewModel.swift; sourceTree = "<group>"; };
+		8F1E070F24E7CFFA00E00AA0 /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 		8F1E06DE24E716B400E00AA0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8F1E070C24E7CA8200E00AA0 /* FactListViewModel */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 		8F1E06E724E71A1600E00AA0 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				8F1E070F24E7CFFA00E00AA0 /* JsonParser.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -304,6 +310,14 @@
 				8F1E06F124E72B9D00E00AA0 /* FactCell.swift */,
 			);
 			path = UITableViewCell;
+			sourceTree = "<group>";
+		};
+		8F1E070C24E7CA8200E00AA0 /* FactListViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E070D24E7CAA500E00AA0 /* FactListViewModel.swift */,
+			);
+			path = FactListViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,8 +459,10 @@
 				8F1E070624E7BFFA00E00AA0 /* HTTPRequestManager.swift in Sources */,
 				8F1E06F424E7B9C900E00AA0 /* About.swift in Sources */,
 				8F1E06F824E7BBDE00E00AA0 /* RequestBuilder.swift in Sources */,
+				8F1E070E24E7CAA500E00AA0 /* FactListViewModel.swift in Sources */,
 				8F1E06F624E7BA0900E00AA0 /* Fact.swift in Sources */,
 				8F1E06B124E7151800E00AA0 /* FactsViewController.swift in Sources */,
+				8F1E071024E7CFFA00E00AA0 /* JsonParser.swift in Sources */,
 				8F1E070224E7BFFA00E00AA0 /* Response.swift in Sources */,
 				8F1E070724E7BFFA00E00AA0 /* URLRequest+Additions.swift in Sources */,
 				8F1E06AD24E7151800E00AA0 /* AppDelegate.swift in Sources */,

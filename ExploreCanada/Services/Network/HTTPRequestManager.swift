@@ -23,8 +23,8 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
     fileprivate var runningURLRequests: NSSet = NSSet()
 
     fileprivate var networkFetchingCount: Int = 0
-    var isSSLPinningEnabled = false
-    var certificateFileName = ""
+    private var isSSLPinningEnabled = false
+    private var certificateFileName = ""
     // MARK: - Singleton Instance
 
     class var shared: HTTPRequestManager {
@@ -45,6 +45,13 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
         }
     }
 
+    func setCertficateName(_ text: String){
+        self.certificateFileName = text
+    }
+    
+    func setSSLPinning(_ required: Bool){
+        self.isSSLPinningEnabled = required
+    }
     /**
      Call to hide network indicator in Status Bar
      */
@@ -60,54 +67,21 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
         }
     }
 
-    /**
-     Setting Authorization HTTP Request Header
-     */
-    func setAuthorizationHeader() {
-        // Set the http header field for authorization
-        // setValue("Token token=usertoken", forHTTPHeaderField: "Authorization")
-    }
-
-    /**
-     Add additional parameters to an existing dictionary
-
-     - parameter params: parameters dictionary
-
-     - returns: returns final dictionary
-     */
-    func addAdditionalParameters(_ params: [String: Any]?) -> [String: Any] {
-        /* var finalParams = params ?? [:]
-         let deviceInfo = UIDevice.deviceInfo()
-
-         for key in deviceInfo.keys {
-         if let value = deviceInfo[key] {
-         finalParams[key] = value
-         }
-         } */
-
-        return params ?? [:]
-    }
-
     // MARK: - Public Methods
 
     /**
      Perform request to fetch data
 
      - parameter request:           request
-     - parameter userInfo:          userinfo
+     - parameter info:          userinfo
      - parameter completionHandler: handler
      */
-    func performRequest(_ request: URLRequest, userInfo _: NSDictionary? = nil, completionHandler: @escaping (_ response: Response) -> Void) {
+    func performRequest(_ request: URLRequest, info _: NSDictionary? = nil, completionHandler: @escaping (_ response: Response) -> Void) {
         guard isNetworkAvaiblable() else {
             let res = Response(request, nil, nil, error: NSError.errorForNoNetwork())
             completionHandler(res)
             return // do not proceed if user is not connected to internet
         }
-//        if UserManager.shared.activeUser != nil {
-//            urlRequest.addValue(UserManager.shared.activeUser?.userToken ?? "", forHTTPHeaderField: "userToken")
-//        } else if UserManager.shared.tempUser != nil {
-//            urlRequest.addValue(UserManager.shared.tempUser?.userToken ?? "", forHTTPHeaderField: "userToken")
-//        }
         performSessionDataTaskWithRequest(request, completionHandler: completionHandler)
     }
 
@@ -129,6 +103,7 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
 //                apiResponse = Response(request, response as? HTTPURLResponse, responseError!, data: data)
 //                self.logError(apiResponse.error!, request: request)
 //            } else {
+            
             apiResponse = Response(request, response as? HTTPURLResponse, data, error: error)
                 self.logResponse(data!, forRequest: request)
             //}

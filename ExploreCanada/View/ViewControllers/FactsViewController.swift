@@ -31,6 +31,7 @@ class FactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        FactListViewModel().fetchFacts()
     }
     
     private func configureTableView() {

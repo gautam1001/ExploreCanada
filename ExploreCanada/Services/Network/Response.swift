@@ -55,23 +55,6 @@ class Response {
         }
     }
 
-    /*init(_ request: URLRequest?, _ response: HTTPURLResponse?, _ connectionError: Error, data: Data? = nil) {
-        self.request = request
-        self.response = response
-        error = connectionError
-
-        if let resultData = data {
-            self.data = resultData
-            do {
-                // Try parsing some valid JSON
-                resultJSON = try JSONSerialization.jsonObject(with: self.data!, options: JSONSerialization.ReadingOptions.allowFragments) as? Dictionary
-                error = errorGenerator(responseCode(), message())
-            } catch {
-                self.error = connectionError
-            }
-        }
-    }*/
-
     // MARK: - Getters Methods
 
     /**
@@ -137,15 +120,3 @@ class Response {
         return NSError(domain: "com.httprequest", code: code, userInfo: errorDictionary)
     }
 }
-
-
-//    if let httpResponse = response {
-//                   if httpResponse.statusCode > 299 {
-//                       if httpResponse.statusCode == HTTPStatusCode.unauthorized.rawValue {
-//                           responseError = NSError(domain: "ACCESSDENIED", code: 401, userInfo: [NSLocalizedDescriptionKey: ""])
-//
-//                       } else if data != nil {
-//                           responseError = NSError.errorForHTTPStatus(httpResponse.statusCode)
-//                       }
-//                   }
-//               }
