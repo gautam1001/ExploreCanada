@@ -15,7 +15,7 @@ class FactsViewController: UIViewController {
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
-                     #selector(FactsViewController.refreshAction(_:)),
+            #selector(FactsViewController.refreshAction(_:)),
                                  for: UIControl.Event.valueChanged)
         return refreshControl
     }()
@@ -33,15 +33,15 @@ class FactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        factListViewModel.fetchFacts()
-        factListViewModel.listUpdated { [weak self] in
+        factListViewModel.fetchFacts  { [weak self] title in
             self?.tableView.reloadData()
+            self?.title = title
         }
     }
     
     private func configureTableView() {
         self.view.addSubview(tableView)
-          //Add Top,Leading,Bottom,Trailing Constraint to Safe Area
+        //Add Top,Leading,Bottom,Trailing Constraint to Safe Area
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         self.tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -61,23 +61,28 @@ class FactsViewController: UIViewController {
         //Pull To Refresh control ...
         self.tableView.addSubview(self.refreshControl)
         self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-       }
+    }
     
     @objc func refreshAction(_ sender: Any?) {
         self.title = "Refreshing ..."
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.refreshControl.endRefreshing()
-            self.title = "About Canada"
-        })
+        //Delaying of 1 secconds is added because network api call is too fast and user not able to see the 'refreshing...' title
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            self?.factListViewModel.fetchFacts { [weak self] title in
+                self?.tableView.reloadData()
+                self?.title = title
+                self?.refreshControl.endRefreshing()
+            }
+        }
+        
     }
 }
 
 extension FactsViewController: UITableViewDataSource, UITableViewDelegate {
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return factListViewModel.count
     }
-        
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let factCell = tableView.dequeueReusableCell(withIdentifier:  FactCell.identifier, for: indexPath) as! FactCell
         factCell.configure(with: factListViewModel[indexPath.row])
