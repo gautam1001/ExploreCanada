@@ -74,10 +74,10 @@ class FactCell: UITableViewCell {
         
     }
     
-    func configure(){
+    func configure(with viewModel:FactViewModel?){
         self.factImageView.image = UIImage(named: "flag")
-        self.titleLabel.text = "Beavers"
-        self.descriptionLabel.text = "Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony"
+        self.titleLabel.text = viewModel?.title
+        self.descriptionLabel.text = viewModel?.description
     }
 
 

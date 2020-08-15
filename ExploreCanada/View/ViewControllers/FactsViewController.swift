@@ -20,6 +20,8 @@ class FactsViewController: UIViewController {
         return refreshControl
     }()
     
+    let factListViewModel = FactListViewModel()
+    
     //MARK:  Controller Life cycle Methods
     override func loadView() {
         super.loadView()
@@ -31,12 +33,14 @@ class FactsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        FactListViewModel().fetchFacts()
+        factListViewModel.fetchFacts()
+        factListViewModel.listUpdated { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     private func configureTableView() {
         self.view.addSubview(tableView)
-        self.tableView.dataSource = self
           //Add Top,Leading,Bottom,Trailing Constraint to Safe Area
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -50,13 +54,13 @@ class FactsViewController: UIViewController {
         //Register TableViewCell
         self.tableView.register(FactCell.self, forCellReuseIdentifier: FactCell.identifier)
         
-        //Dynamic height of TableviewCell ...
-        tableView.estimatedRowHeight = 100.0
-        tableView.rowHeight = UITableView.automaticDimension
-        
-        //Add PullToRefresh control ...
-        tableView.addSubview(self.refreshControl)
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //Set dynamic height of TableViewCell ...
+        self.tableView.estimatedRowHeight = 100.0
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.dataSource = self
+        //Pull To Refresh control ...
+        self.tableView.addSubview(self.refreshControl)
+        self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
        }
     
     @objc func refreshAction(_ sender: Any?) {
@@ -71,12 +75,12 @@ class FactsViewController: UIViewController {
 extension FactsViewController: UITableViewDataSource, UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return factListViewModel.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let factCell = tableView.dequeueReusableCell(withIdentifier:  FactCell.identifier, for: indexPath) as! FactCell
-        factCell.configure()
+        factCell.configure(with: factListViewModel[indexPath.row])
         return factCell
     }
 }

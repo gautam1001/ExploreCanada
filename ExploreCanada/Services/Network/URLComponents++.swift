@@ -1,6 +1,5 @@
 //
 //  URLComponents++.swift
-//  NetworkLayer
 //
 //  Created by Prashant Gautam on 13/06/20.
 //  Copyright © 2020 Prashant. All rights reserved.
