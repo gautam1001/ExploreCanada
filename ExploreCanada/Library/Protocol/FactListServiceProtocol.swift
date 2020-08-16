@@ -8,6 +8,12 @@
 
 import Foundation
 
+protocol FactServiceProtocol{
+    typealias CompletionHandler = (ListResult<Data, Error>) -> Void
+    var requestBuilder:RequestBuilder? { get set }
+    var responseHandler: CompletionHandler? { get set }
+    func cancel()
+}
 
 
 protocol FactListServiceProtocol:ListServiceProtocol {

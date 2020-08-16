@@ -8,12 +8,6 @@
 
 import Foundation
 
-protocol FactServiceProtocol{
-    typealias CompletionHandler = (ListResult<Data, Error>) -> Void
-    var requestBuilder:RequestBuilder? { get set }
-    var responseHandler: CompletionHandler? { get set }
-    func cancel()
-}
 
 final class FactService: FactServiceProtocol {
     
@@ -44,6 +38,5 @@ final class FactService: FactServiceProtocol {
     func cancel(){
         guard let _requestBuilder = self.requestBuilder else {return}
         APIService.shared.cancel(_requestBuilder)
-        requestBuilder = nil
     }
 }

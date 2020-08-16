@@ -10,6 +10,7 @@ import XCTest
 @testable import ExploreCanada
 
 class FactsListViewModelTest: XCTestCase {
+    // SUT - Subjects under test
     var listViewModel : FactListServiceProtocol!
     var factService:FactService!
     override func setUp() {

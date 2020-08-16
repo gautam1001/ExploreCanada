@@ -43,6 +43,7 @@
 		8F1E073524E96E4F00E00AA0 /* FactListServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E073424E96E4F00E00AA0 /* FactListServiceProtocol.swift */; };
 		8F1E073724E96FBD00E00AA0 /* MockFactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E073624E96FBD00E00AA0 /* MockFactListViewModel.swift */; };
 		8F1E073B24E9725500E00AA0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E073A24E9725500E00AA0 /* ServiceError.swift */; };
+		8F1E073D24E97BE800E00AA0 /* FactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E073C24E97BE800E00AA0 /* FactServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		8F1E073424E96E4F00E00AA0 /* FactListServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListServiceProtocol.swift; sourceTree = "<group>"; };
 		8F1E073624E96FBD00E00AA0 /* MockFactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFactListViewModel.swift; sourceTree = "<group>"; };
 		8F1E073A24E9725500E00AA0 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		8F1E073C24E97BE800E00AA0 /* FactServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				8F1E06C324E7151A00E00AA0 /* ExploreCanadaTests.swift */,
 				8F1E072D24E92D6C00E00AA0 /* FactsListViewModelTest.swift */,
 				8F1E073624E96FBD00E00AA0 /* MockFactListViewModel.swift */,
+				8F1E073C24E97BE800E00AA0 /* FactServiceTests.swift */,
 				8F1E06C524E7151A00E00AA0 /* Info.plist */,
 			);
 			path = ExploreCanadaTests;
@@ -590,6 +593,7 @@
 				8F1E072E24E92D6C00E00AA0 /* FactsListViewModelTest.swift in Sources */,
 				8F1E073724E96FBD00E00AA0 /* MockFactListViewModel.swift in Sources */,
 				8F1E06C424E7151A00E00AA0 /* ExploreCanadaTests.swift in Sources */,
+				8F1E073D24E97BE800E00AA0 /* FactServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
