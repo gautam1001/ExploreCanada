@@ -27,7 +27,7 @@ This project shows the unknown facts about Canada in a list.
  - none
 
  ## Installation
-Open the project .xcodeproj in XCode and run the application on simulator. Use pull to refresh for refreshing the facts list.
+Open the project .xcodeproj in XCode and run the application on simulator.
 
  ## Running the tests
 
