@@ -45,7 +45,7 @@ Open the project .xcodeproj in XCode and run the application on simulator.
  ## Authors
 
  * **Prashant Gautam** - *Initial work* - [gautam1001](https://github.com/gautam1001)
- See other works of the author on [Medium.com](https://medium.com/@prashant.gtm1001)
+ * Follow the author on [Medium.com](https://medium.com/@prashant.gtm1001)
 
  ## License
 
