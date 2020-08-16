@@ -18,14 +18,16 @@ This project shows the unknown facts about Canada in a list.
 
  Download the project's zip from the 'Code -> Download' option above OR you can clone the repository to your Github desktop application or via terminal. 
 
- ### Prerequisites
+ ## Prerequisites
 
  - XCode 9 or above
  - Internet connectivity
- - No dependencies required
+ 
+ ## Dependencies
+ - none
 
- ### Installing
-Open the project .xcodeproj in XCode and run the application. Use pull to refresh for refreshing the facts list.
+ ## Installation
+Open the project .xcodeproj in XCode and run the application on simulator. Use pull to refresh for refreshing the facts list.
 
  ## Running the tests
 
