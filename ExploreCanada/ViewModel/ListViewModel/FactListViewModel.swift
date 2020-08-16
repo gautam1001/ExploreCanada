@@ -8,43 +8,31 @@
 
 import Foundation
 
-
-protocol FactListServiceProtocol:ListServiceProtocol {
-    var _aboutViewModel : AboutViewModel? { get set }
-}
-
-extension FactListServiceProtocol {
-    var count: Int {
-        return _aboutViewModel?.factCounts ?? 0
-    }
-}
-
 class FactListViewModel:FactListServiceProtocol {
-
+    var factService: FactService?
     var _aboutViewModel : AboutViewModel?
-    
+    //----
     typealias FactListUpdateHandler = ListUpdateHandler
-    
     var updateHandler: FactListUpdateHandler?
     
-    var title:String?{
-        return _aboutViewModel?.screenTitle
-    }
-    var count:Int{
-        return _aboutViewModel?.factCounts ?? 0
+    required init(service:FactService) {
+        factService = service
     }
     
-    func fetch(_ handler: @escaping FactListUpdateHandler){
+    func fetchList(_ handler: @escaping FactListUpdateHandler){
         updateHandler =  handler
-        let request = RequestBuilder.getFacts
-        APIService.shared.performRequest(request) { [weak self] result in
-                   switch result {
-                   case .success(let data):
-                           self?._aboutViewModel = AboutViewModel(with: data)
-                           self?.updateHandler?(.success((self?._aboutViewModel?.screenTitle ?? "")))
-                   case .failure(let error):
-                       self?.updateHandler?(.failure(error))
-                   }
+        guard let _ = self.factService else {
+            updateHandler?(.failure(NetworkError.other(string: "No request initialized")))
+            return
+        }
+        factService?.fetch { [weak self] result in
+            switch result {
+            case .success(let data):
+                self?._aboutViewModel = AboutViewModel(with: data)
+                self?.updateHandler?(.success((self?._aboutViewModel?.screenTitle ?? "")))
+            case .failure(let error):
+                self?.updateHandler?(.failure(error))
+            }
         }
     }
     

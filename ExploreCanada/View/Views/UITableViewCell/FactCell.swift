@@ -17,9 +17,9 @@ extension UITableViewCell {
     }
 }
 class FactCell: UITableViewCell {
-    let factImageView:UIImageView = UIImageView()
-    let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
+    private let factImageView:UIImageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let descriptionLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

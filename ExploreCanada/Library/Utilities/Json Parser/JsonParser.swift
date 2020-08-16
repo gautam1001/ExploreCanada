@@ -8,6 +8,7 @@
 import Foundation
 
 class JsonParser {
+    
     class func parse<T: Codable>(_: T.Type, data: Data) -> T? {
         do {
             return try JSONDecoder().decode(T.self, from: data)

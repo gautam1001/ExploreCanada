@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 enum NetworkError: Error {
     case badUrl(string: String)
     case reachability(string: String)

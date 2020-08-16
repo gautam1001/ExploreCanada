@@ -58,7 +58,7 @@ extension APIService {
            }
        }
     
-    func cancelRequestForService(_ request: RequestBuilder) {
+    func cancel(_ request: RequestBuilder) {
         guard let url = URL(string: request.path) else { return }
         httpClient.cancelRequestForURL(url)
     }

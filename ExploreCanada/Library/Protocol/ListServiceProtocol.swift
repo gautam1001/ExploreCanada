@@ -9,14 +9,14 @@
 import Foundation
 
 
-enum ListResult<T,Error> {
+enum ListResult<T,Error>{
     case success(T)
     case failure(Error)
 }
 
 protocol ListServiceProtocol {
     typealias ListUpdateHandler = ((ListResult<Any,Error>) -> Void)
-    func fetch(_ handler: @escaping ListUpdateHandler)
+    func fetchList(_ handler: @escaping ListUpdateHandler)
     var updateHandler: ListUpdateHandler? { get set }
     var count:Int{ get }
 }

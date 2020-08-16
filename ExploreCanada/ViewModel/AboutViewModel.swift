@@ -9,7 +9,7 @@
 import Foundation
 
 class AboutViewModel {
-
+    
     private var _about:About?
     private var _factViewModels:[FactViewModel]?
     var factCounts:Int{
@@ -31,12 +31,12 @@ class AboutViewModel {
     
     var screenTitle: String? {
         get {return _about?.title }
-       set{
-        _about?.title = newValue
-       }
+        set{
+            _about?.title = newValue
+        }
     }
-
-  private func populateFacts(){
+    
+    private func populateFacts(){
         if let facts = _about?.facts {
             _factViewModels = [FactViewModel]()
             for fact in facts {
@@ -47,11 +47,11 @@ class AboutViewModel {
                 if  (($0.title != nil) && ($0.description != nil) &&  ($0.imageHref != nil)){
                     return $0
                 }
-               return nil
+                return nil
             }
         }
-    
-  }
+        
+    }
     
     //MARK: Getter setter for fact items in the list
     subscript(_ index: Int) -> FactViewModel? {
@@ -62,5 +62,5 @@ class AboutViewModel {
             }
         }
     }
-
+    
 }

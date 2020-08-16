@@ -10,7 +10,7 @@ import UIKit
 
 class FactsViewController: UIViewController {
     private var tableView : FactsTableView!
-    private let listViewModel = FactListViewModel()
+    private var listViewModel:FactListViewModel? = nil
     
     //MARK:  Controller Life cycle Methods
     override func loadView() {
@@ -21,6 +21,7 @@ class FactsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.listViewModel = FactListViewModel(service: FactService(request: RequestBuilder.getFacts))
         self.fetchFacts()
     }
     
@@ -43,7 +44,7 @@ class FactsViewController: UIViewController {
     }
    
     private func fetchFacts(){
-        listViewModel.fetch { [unowned self] result in
+        listViewModel?.fetchList { [unowned self] result in
             switch result {
             case .success(let title): self.title = title as? String
             case .failure(let error): print(error.localizedDescription)
@@ -57,12 +58,12 @@ class FactsViewController: UIViewController {
 extension FactsViewController: UITableViewDataSource {
     //Datasource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listViewModel.count
+        return listViewModel?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let factCell = tableView.dequeueReusableCell(withIdentifier:  FactCell.identifier, for: indexPath) as! FactCell
-        factCell.configure(with: listViewModel[indexPath.row])
+        factCell.configure(with: listViewModel?[indexPath.row])
         return factCell
     }
 }

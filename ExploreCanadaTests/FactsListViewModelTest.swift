@@ -9,42 +9,27 @@
 import XCTest
 @testable import ExploreCanada
 
-
-final class MockFactListViewModel:FactListServiceProtocol {
-    
-    var _aboutViewModel: AboutViewModel?
-    var updateHandler: ListUpdateHandler?
-    
-    func fetch(_ handler: @escaping ListUpdateHandler) {
-        updateHandler =  handler
-        if let aboutViewModel = _aboutViewModel{
-            self.updateHandler?(.success((aboutViewModel.screenTitle ?? "")))
-        }else{
-            self.updateHandler?(.failure(NetworkError.other(string: "Unable to fetch facts")))
-        }
-    }
-    
-}
-
 class FactsListViewModelTest: XCTestCase {
-    var listViewModel : MockFactListViewModel!
-    
+    var listViewModel : FactListServiceProtocol!
+    var factService:FactService!
     override func setUp() {
+         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.listViewModel = MockFactListViewModel()
+        self.factService = FactService(request: RequestBuilder.getFacts)
+        self.listViewModel = MockFactListViewModel(service: self.factService)
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.setUp()
         self.listViewModel = nil
+        self.factService = nil
         super.tearDown()
     }
-
+    
     func testFetchFactsSuccess() {
         let expectation = XCTestExpectation(description: "Facts fetch")
-        self.listViewModel._aboutViewModel = AboutViewModel(with: About(title: "About Canada", facts: []))
-        self.listViewModel.fetch { result in
+        self.listViewModel?._aboutViewModel = AboutViewModel(with: About(title: "About Canada", facts: []))
+        self.listViewModel?.fetchList { result in
             switch result {
             case .success( _): expectation.fulfill()
             case .failure( let error): XCTAssert(false, error.localizedDescription)
@@ -55,8 +40,8 @@ class FactsListViewModelTest: XCTestCase {
     
     func testFetchFactsNoResult() {
         let expectation = XCTestExpectation(description: "Facts fetch")
-        self.listViewModel._aboutViewModel = nil
-        self.listViewModel.fetch { result in
+        self.listViewModel?._aboutViewModel = nil
+        self.listViewModel?.fetchList { result in
             switch result {
             case .success( _): XCTAssert(false, "Facts should not be fetched")
             case .failure( _): expectation.fulfill()
@@ -64,13 +49,28 @@ class FactsListViewModelTest: XCTestCase {
         }
         wait(for: [expectation], timeout: 5.0)
     }
-
+    
+    func testFetchFactsNoService() {
+        
+        let expectation = XCTestExpectation(description: "No service facts")
+        // giving no service to a view model
+        self.listViewModel?.factService = nil
+        
+        listViewModel?.fetchList({ result in
+            switch result {
+            case .success( _): XCTAssert(false, "Facts should not be fetched")
+            case .failure( _): expectation.fulfill()
+            }
+        })
+        wait(for: [expectation], timeout: 5.0)
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
 }
 
