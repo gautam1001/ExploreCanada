@@ -30,7 +30,7 @@ extension RequestBuilder {
     private func endPoint() -> String {
         switch self {
         case .getFacts:
-            return "s/67zezivdylh8flh/Facts.json"
+            return "s/408h1ndn4cwy2f5/AboutCanada.json"
         }
     }
     
