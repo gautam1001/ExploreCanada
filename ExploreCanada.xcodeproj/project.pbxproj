@@ -38,6 +38,8 @@
 		8F1E072524E824F300E00AA0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E072424E824F300E00AA0 /* NetworkError.swift */; };
 		8F1E072924E8329400E00AA0 /* FactsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E072824E8329400E00AA0 /* FactsTableView.swift */; };
 		8F1E072B24E8499C00E00AA0 /* UIVIew+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E072A24E8499C00E00AA0 /* UIVIew+Layout.swift */; };
+		8F1E072E24E92D6C00E00AA0 /* FactsListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E072D24E92D6C00E00AA0 /* FactsListViewModelTest.swift */; };
+		8F1E073124E9418D00E00AA0 /* ListServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E073024E9418D00E00AA0 /* ListServiceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		8F1E072424E824F300E00AA0 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		8F1E072824E8329400E00AA0 /* FactsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsTableView.swift; sourceTree = "<group>"; };
 		8F1E072A24E8499C00E00AA0 /* UIVIew+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Layout.swift"; sourceTree = "<group>"; };
+		8F1E072D24E92D6C00E00AA0 /* FactsListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsListViewModelTest.swift; sourceTree = "<group>"; };
+		8F1E073024E9418D00E00AA0 /* ListServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListServiceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 		8F1E06C224E7151A00E00AA0 /* ExploreCanadaTests */ = {
 			isa = PBXGroup;
 			children = (
+				8F1E072D24E92D6C00E00AA0 /* FactsListViewModelTest.swift */,
 				8F1E06C324E7151A00E00AA0 /* ExploreCanadaTests.swift */,
 				8F1E06C524E7151A00E00AA0 /* Info.plist */,
 			);
@@ -263,6 +268,7 @@
 		8F1E06E524E719BF00E00AA0 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8F1E072F24E9417000E00AA0 /* Protocol */,
 				8F1E072724E8325900E00AA0 /* Custom */,
 				8F1E06E724E71A1600E00AA0 /* Utilities */,
 				8F1E06E624E719D100E00AA0 /* Extensions */,
@@ -379,6 +385,14 @@
 				8F1E072A24E8499C00E00AA0 /* UIVIew+Layout.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		8F1E072F24E9417000E00AA0 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E073024E9418D00E00AA0 /* ListServiceProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F1E070824E7BFFA00E00AA0 /* APIService.swift in Sources */,
+				8F1E073124E9418D00E00AA0 /* ListServiceProtocol.swift in Sources */,
 				8F1E070124E7BFFA00E00AA0 /* HTTPStatusCode.swift in Sources */,
 				8F1E071224E7EAAE00E00AA0 /* MulticastDelegate.swift in Sources */,
 				8F1E070324E7BFFA00E00AA0 /* Dictionary+URLQueryItem.swift in Sources */,
@@ -545,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F1E072E24E92D6C00E00AA0 /* FactsListViewModelTest.swift in Sources */,
 				8F1E06C424E7151A00E00AA0 /* ExploreCanadaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

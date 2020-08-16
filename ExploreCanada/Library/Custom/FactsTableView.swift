@@ -36,10 +36,7 @@ class FactsTableView: UITableView {
     }
     
     @objc private func refreshAction(_ sender: Any?) {
-        //Delaying of 1 secconds is added because network api call is too fast and user not able to see the 'refreshing...' title
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            self?.refreshHandler?()
-        }
+       self.refreshHandler?()
     }
     
     func endRefreshing() {

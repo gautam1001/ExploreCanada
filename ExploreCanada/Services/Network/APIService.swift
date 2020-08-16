@@ -40,24 +40,7 @@ extension APIService {
         }
         return true
     }
-    // MARK: - Perform request
-    /*func performRequest(_ request: RequestBuilder, completion: @escaping (_ result: Result<Dictionary<String, Any>?,NetworkError>) -> Void) {
-        guard let url = request.url else {return}
-        let httpRequest = URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as NSDictionary?)
-        guard let _ = httpRequest.url else {
-            return completion(.failure(.badUrl(string: "Bad url")))
-        }
-        httpClient.performRequest(httpRequest) { response in
-            if response.statusCode == HTTPStatusCode.requestTimeout.rawValue {
-                completion(.failure(.requestTimedOut(string: "Request timed out")))
-            } else if let error = response.error{
-                completion(.failure(.other(string: error.localizedDescription)))
-            } else if let responseJson = response.resultJSON {
-                completion(.success(responseJson))
-            }
-        }
-    }*/
-    
+
     func performRequest(_ request: RequestBuilder, completion: @escaping (_ result: Result<Data,NetworkError>) -> Void) {
            guard let url = request.url else {return}
            let httpRequest = URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as NSDictionary?)

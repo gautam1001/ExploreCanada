@@ -18,6 +18,11 @@ class AboutViewModel {
     
     private init() {}
     
+    init(with about:About) {
+        self._about = about
+        self.populateFacts()
+    }
+    
     init(with data:Data) {
         guard let about =  JsonParser.parse(About.self, data: data) else {return}
         self._about = about

@@ -33,14 +33,19 @@ class FactsViewController: UIViewController {
         self.tableView.register(FactCell.self, forCellReuseIdentifier: FactCell.identifier)
         self.tableView.dataSource = self
         tableView.refreshHandler = {  [unowned self] in
-            self.fetchFacts()
+             //Delaying of 1 secconds is added because network api call is too fast and user not able to see the 'refreshing...' title
+            self.title = "Refreshing ..."
+             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [unowned self] in
+                self.fetchFacts()
+             }
+            
         }
     }
    
     private func fetchFacts(){
         listViewModel.fetch { [unowned self] result in
             switch result {
-            case .success(let title): self.title = title
+            case .success(let title): self.title = title as? String
             case .failure(let error): print(error.localizedDescription)
             }
             self.tableView.reloadData()

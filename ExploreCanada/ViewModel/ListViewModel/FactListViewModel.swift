@@ -8,17 +8,24 @@
 
 import Foundation
 
-class FactListViewModel {
-    
-    enum FactListResult<String,Error> {
-        case success(String)
-        case failure(Error)
+
+protocol FactListServiceProtocol:ListServiceProtocol {
+    var _aboutViewModel : AboutViewModel? { get set }
+}
+
+extension FactListServiceProtocol {
+    var count: Int {
+        return _aboutViewModel?.factCounts ?? 0
     }
+}
+
+class FactListViewModel:FactListServiceProtocol {
+
+    var _aboutViewModel : AboutViewModel?
     
-    private var _aboutViewModel : AboutViewModel?
+    typealias FactListUpdateHandler = ListUpdateHandler
     
-    typealias FactListUpdateHandler = ((FactListResult<String,Error>) -> Void)
-    private var updateHandler: FactListUpdateHandler?
+    var updateHandler: FactListUpdateHandler?
     
     var title:String?{
         return _aboutViewModel?.screenTitle
@@ -28,17 +35,17 @@ class FactListViewModel {
     }
     
     func fetch(_ handler: @escaping FactListUpdateHandler){
-      updateHandler =  handler
+        updateHandler =  handler
         let request = RequestBuilder.getFacts
         APIService.shared.performRequest(request) { [weak self] result in
                    switch result {
                    case .success(let data):
                            self?._aboutViewModel = AboutViewModel(with: data)
-                           self?.updateHandler?(.success(self?._aboutViewModel?.screenTitle ?? ""))
+                           self?.updateHandler?(.success((self?._aboutViewModel?.screenTitle ?? "")))
                    case .failure(let error):
                        self?.updateHandler?(.failure(error))
                    }
-               }
+        }
     }
     
     //MARK: Getter setter for factviewmodel items in the list
