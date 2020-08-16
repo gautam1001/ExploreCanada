@@ -279,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				8F1E072F24E9417000E00AA0 /* Protocol */,
-				8F1E072724E8325900E00AA0 /* Custom */,
 				8F1E06E724E71A1600E00AA0 /* Utilities */,
 				8F1E06E624E719D100E00AA0 /* Extensions */,
 			);
@@ -318,6 +317,7 @@
 		8F1E06E924E71BEB00E00AA0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8F1E073E24E9CFA400E00AA0 /* UITableView */,
 				8F1E06F024E72B7E00E00AA0 /* UITableViewCell */,
 			);
 			path = Views;
@@ -381,14 +381,6 @@
 			path = Collections;
 			sourceTree = "<group>";
 		};
-		8F1E072724E8325900E00AA0 /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-				8F1E072824E8329400E00AA0 /* FactsTableView.swift */,
-			);
-			path = Custom;
-			sourceTree = "<group>";
-		};
 		8F1E072C24E8545B00E00AA0 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +413,14 @@
 				8F1E073A24E9725500E00AA0 /* ServiceError.swift */,
 			);
 			path = "Custom Error";
+			sourceTree = "<group>";
+		};
+		8F1E073E24E9CFA400E00AA0 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E072824E8329400E00AA0 /* FactsTableView.swift */,
+			);
+			path = UITableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
