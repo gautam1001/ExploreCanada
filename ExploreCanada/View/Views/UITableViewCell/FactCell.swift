@@ -38,7 +38,7 @@ class FactCell: UITableViewCell {
     }
     
     
-    
+    // Initial ui setup of the tablevie cell
     private func setupUI(){
          self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //Add ImageView and labels to contentView
@@ -53,6 +53,7 @@ class FactCell: UITableViewCell {
         self.setUpConstraints()
     }
     
+    // Apply autolayouts
     private func setUpConstraints() {
         //ImageView Constraints
         self.factImageView.centerYAnchor.constraint(equalTo:self.contentView.centerYAnchor).isActive = true
@@ -74,6 +75,7 @@ class FactCell: UITableViewCell {
         
     }
     
+    // Configure cell UI with the fact data
     func configure(with viewModel:FactViewModel?){
         if let imageHref = viewModel?.imageHref {
             self.factImageView.setImage(with: imageHref)

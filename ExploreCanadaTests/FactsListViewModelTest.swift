@@ -10,9 +10,10 @@ import XCTest
 @testable import ExploreCanada
 
 class FactsListViewModelTest: XCTestCase {
-    // SUT - Subjects under test
+    // SUT - Subject under test
     var listViewModel : FactListServiceProtocol!
     var factService:FactService!
+    
     override func setUp() {
          super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -40,7 +41,7 @@ class FactsListViewModelTest: XCTestCase {
     }
     
     func testFetchFactsNoResult() {
-        let expectation = XCTestExpectation(description: "Facts fetch")
+        let expectation = XCTestExpectation(description: "No Facts")
         self.listViewModel?._aboutViewModel = nil
         self.listViewModel?.fetchList { result in
             switch result {
@@ -53,8 +54,8 @@ class FactsListViewModelTest: XCTestCase {
     
     func testFetchFactsNoService() {
         
-        let expectation = XCTestExpectation(description: "No service facts")
-        // giving no service to a view model
+        let expectation = XCTestExpectation(description: "No service assigned")
+        // no service assigned to the view model
         self.listViewModel?.factService = nil
         
         listViewModel?.fetchList({ result in
@@ -66,8 +67,7 @@ class FactsListViewModelTest: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testPerformance() {
         self.measure {
             // Put the code you want to measure the time of here.
         }

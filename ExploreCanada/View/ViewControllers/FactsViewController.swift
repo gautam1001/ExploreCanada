@@ -34,12 +34,11 @@ class FactsViewController: UIViewController {
         self.tableView.register(FactCell.self, forCellReuseIdentifier: FactCell.identifier)
         self.tableView.dataSource = self
         tableView.refreshHandler = {  [unowned self] in
-             //Delaying of 1 secconds is added because network api call is too fast and user not able to see the 'refreshing...' title
+             //Delay of 1 secconds is added because network api call is too fast and user is not able to see the 'refreshing...' title while pull to refresh
             self.title = "Refreshing ..."
              DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [unowned self] in
                 self.fetchFacts()
              }
-            
         }
     }
    

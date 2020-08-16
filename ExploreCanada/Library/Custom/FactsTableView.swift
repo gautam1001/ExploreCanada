@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/**
+  Custom tableview classfor showing facts
+ */
 class FactsTableView: UITableView {
     
     lazy var _refreshControl: UIRefreshControl = {
@@ -17,7 +19,10 @@ class FactsTableView: UITableView {
                                  for: UIControl.Event.valueChanged)
         return refreshControl
     }()
+    
     var refreshHandler: (()->Void)?
+    
+    //MARK: Initializer
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         //View added in the bottom to avoid showing empty space with extra cells ...
@@ -35,6 +40,7 @@ class FactsTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Helper methods
     @objc private func refreshAction(_ sender: Any?) {
        self.refreshHandler?()
     }
