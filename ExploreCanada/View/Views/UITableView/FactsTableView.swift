@@ -28,10 +28,10 @@ class FactsTableView: UITableView {
         //View added in the bottom to avoid showing empty space with extra cells ...
         tableFooterView = UIView()
         //Set dynamic height of TableViewCell ...
-        estimatedRowHeight = 80
+        estimatedRowHeight = 100
         rowHeight = UITableView.automaticDimension
         //dataSource = self
-        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         showsVerticalScrollIndicator = false
         refreshControl = _refreshControl
     }
