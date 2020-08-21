@@ -9,17 +9,6 @@ import Foundation
 
 public final class APIService {
     private let httpClient: HTTPRequestManager
-    var isSSLPinningEnabled = false {
-        willSet {
-            self.httpClient.setSSLPinning(newValue)
-        }
-    }
-    
-    var certificateFileName = "" {
-        willSet {
-            self.httpClient.setCertficateName(newValue)
-        }
-    }
     // MARK: - Singleton Instance
     class var shared: APIService {
         struct Singleton {
