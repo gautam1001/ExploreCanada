@@ -21,11 +21,13 @@ extension NetworkError: LocalizedError {
         case .badUrl(let message):
             return NSLocalizedString(message, comment: "Bad url")
         case .reachability(let message):
-            return NSLocalizedString(message, comment: "Network not available")
+            return NSLocalizedString(message, comment: "No Internet")
         case .requestTimedOut(let message):
             return NSLocalizedString(message, comment: "Request timed out")
         case .other(let message):
             return NSLocalizedString(message, comment: "Response error")
         }
     }
+    
+   
 }

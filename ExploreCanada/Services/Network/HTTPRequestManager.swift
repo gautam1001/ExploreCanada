@@ -55,7 +55,7 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
      */
     func performRequest(_ request: URLRequest, info _: NSDictionary? = nil, completionHandler: @escaping (_ response: Response) -> Void) {
         guard isNetworkAvaiblable() else {
-            let response = Response(request, nil, nil, error: NetworkError.reachability(string: "Network not available"))
+            let response = Response(request, nil, nil, error: NetworkError.reachability(string: "No internet"))
             completionHandler(response)
             return // do not proceed if user is not connected to internet
         }

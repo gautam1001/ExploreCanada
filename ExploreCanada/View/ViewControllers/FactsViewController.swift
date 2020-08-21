@@ -46,11 +46,18 @@ class FactsViewController: UIViewController {
         listViewModel?.fetchList { [unowned self] result in
             switch result {
             case .success(let title): self.title = title as? String
-            case .failure(let error): print(error.localizedDescription)
+                  self.tableView.reloadData()
+            case .failure(let error): self.showErrorAlert(error)
             }
-            self.tableView.reloadData()
+            self.title = self.listViewModel?.title
             self.tableView.endRefreshing()
         }
+    }
+    
+    private func showErrorAlert(_ error:Error){
+        let alert = UIAlertController(title: "", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
 }
 
