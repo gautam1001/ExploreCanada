@@ -7,13 +7,7 @@
 
 import UIKit
 
-public enum HTTPRequestErrorCode: Int {
-    case httpConnectionError = 40 // Trouble connecting to Server.
-    case httpInvalidRequestError = 50 // Your request had invalid parameters.
-    case httpResultError = 60 // API result error (eg: Invalid username and password).
-}
-
- class HTTPRequestManager: NSObject, URLSessionDelegate{
+ class HTTPRequestManager: NSObject{
     fileprivate lazy var urlSession: URLSession = {
         let operationQueue = OperationQueue()
         operationQueue.qualityOfService = .userInteractive
@@ -77,7 +71,7 @@ extension HTTPRequestManager {
      
      - parameter url: URL
      */
-    fileprivate func addRequestURL(_ url: URL) {
+   private func addRequestURL(_ url: URL) {
         objc_sync_enter(self)
         let requests: NSMutableSet = runningURLRequests.mutableCopy() as! NSMutableSet
         requests.add(url)
@@ -90,7 +84,7 @@ extension HTTPRequestManager {
      
      - parameter url: URL
      */
-    fileprivate func removeRequestedURL(_ url: URL) {
+   private func removeRequestedURL(_ url: URL) {
         objc_sync_enter(self)
         let requests: NSMutableSet = runningURLRequests.mutableCopy() as! NSMutableSet
         if requests.contains(url) == true {

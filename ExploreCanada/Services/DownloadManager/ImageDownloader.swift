@@ -7,21 +7,33 @@
 //
 import UIKit
 
-let imageCache = NSCache<AnyObject, AnyObject>()
-
-final class ImageDownloader: NSObject {
+final class ImageDownloader:NSObject {
+    
+    private static let imageUrlSession: URLSession = {
+        let operationQueue = OperationQueue()
+        operationQueue.qualityOfService = .background
+        return URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: operationQueue)
+    }()
+    
+    static let imageCache = NSCache<AnyObject, AnyObject>()
+    
     private static func getData(url: URL,
                                 completion: @escaping (Data?, URLResponse?, Error?) -> ())
     {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+        imageUrlSession.dataTask(with: url, completionHandler: completion).resume()
     }
     
-    public static func downloadImage(url: URL,
+    static func downloadImage(url: URL,
                                      completion: @escaping (Result<Data,Error>) -> Void)
     {
         
-        ImageDownloader.getData(url: url) { data, response, error in
+        getData(url: url) { data, response, error in
             if let error = error {
+                completion(.failure(error))
+                return
+            }
+            if let httpresponse = response as? HTTPURLResponse, httpresponse.statusCode < HTTPStatusCode.ok.rawValue || httpresponse.statusCode >= HTTPStatusCode.multipleChoices.rawValue {
+                let error = NetworkError.other(string: HTTPStatusCode(statusCode: httpresponse.statusCode).statusDescription)
                 completion(.failure(error))
                 return
             }
@@ -32,4 +44,6 @@ final class ImageDownloader: NSObject {
         }
     }
 }
+
+
 

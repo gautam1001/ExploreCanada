@@ -14,7 +14,7 @@ extension UIImageView {
         guard let url = URL(string: urlString) else { return }
         //image = nil
         
-        if let cachedImage = imageCache.object(forKey: urlString as AnyObject) {
+        if let cachedImage = ImageDownloader.imageCache.object(forKey: urlString as AnyObject) {
             image = cachedImage as? UIImage
             return
         }
@@ -24,7 +24,7 @@ extension UIImageView {
             switch result {
             case .success(let data):
                 guard let newImage = UIImage(data: data) else { return }
-                imageCache.setObject(newImage, forKey: urlString as AnyObject) // Save image to cache
+                ImageDownloader.imageCache.setObject(newImage, forKey: urlString as AnyObject) // Save image to cache
                 weakSelf.image = UIImage(data: data)
             case .failure(_):
                 DispatchQueue.main.async() {
