@@ -28,7 +28,7 @@ extension UIImageView {
                 weakSelf.image = UIImage(data: data)
             case .failure(_):
                 DispatchQueue.main.async() {
-                    weakSelf.backgroundColor = UIColor.lightGray
+                    weakSelf.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
                     weakSelf.image = UIImage(named: "noimage")
                 }
             }

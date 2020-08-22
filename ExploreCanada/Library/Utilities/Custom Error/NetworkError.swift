@@ -9,21 +9,18 @@ import Foundation
 
 
 enum NetworkError: Error {
-    case badUrl(string: String)
-    case reachability(string: String)
-    case requestTimedOut(string: String)
+    case reachability
+    case requestTimedOut
     case other(string: String)
 }
 
 extension NetworkError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .badUrl(let message):
-            return NSLocalizedString(message, comment: "Bad url")
-        case .reachability(let message):
-            return NSLocalizedString(message, comment: "No Internet")
-        case .requestTimedOut(let message):
-            return NSLocalizedString(message, comment: "Request timed out")
+        case .reachability:
+            return NSLocalizedString("Unable to reach the internet.", comment: "No Internet")
+        case .requestTimedOut:
+            return NSLocalizedString("Request timed out", comment: "Request timed out")
         case .other(let message):
             return NSLocalizedString(message, comment: "Response error")
         }

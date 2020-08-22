@@ -10,51 +10,38 @@ import UIKit
 /// Response used to store URL response.
 class Response {
     // The URL request sent to the server.
-    var request: URLRequest?
+    var _request: URLRequest?
     
     // The server's response to the URL request.
-    private var response: HTTPURLResponse?
+    private var _httpResponse: HTTPURLResponse?
     
     // The data returned by the server.
-    var data: Data?
+    private var _data: Data?
     
     // The error received during the request.
-    var error: Error?
+    private var _error: Error?
     
-    // The dictionary received after parsing the received data.
-    var resultJSON: Dictionary<String, Any>?
-    
+    //MARK:Getters
+    var error:Error?{
+        return _error
+    }
+    var request:URLRequest?{
+        return _request
+    }
+    var data: Data?{
+        return _data
+    }
     // MARK: - Initialization Methods
     
     init(_ request: URLRequest, _ response: HTTPURLResponse?, _ responseData: Data?, error: Error?) {
-        self.request = request
-        self.response = response
-        self.error = error
-        self.data = responseData
-        if error == nil, let data = self.data{
-            do {
-                // Try parsing some valid JSON
-                resultJSON = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as? Dictionary
-            } catch let parsingError {
-                // Catxch fires here, with an NSErrro being thrown from the JSONObjectWithData method
-                self.error = parsingError
-            }
-        }else{
-            self.error = error
+        _request = request
+        _httpResponse = response
+        _data = responseData
+        if let error = error {
+           _error = error
+        }else if self.statusCode < HTTPStatusCode.ok.rawValue || self.statusCode >= HTTPStatusCode.multipleChoices.rawValue {
+            _error = NetworkError.other(string: HTTPStatusCode(statusCode: self.statusCode).statusDescription)
         }
-    }
-    
-    /**
-     The response string from the received data.
-     
-     - returns: Returns the response as a string
-     */
-    func outputText() -> String? {
-        guard let data = data else {
-            return nil
-        }
-        
-        return String(data: data as Data, encoding: String.Encoding.utf8)
     }
     
     /**
@@ -63,10 +50,10 @@ class Response {
      - returns: get response code from api response data.
      */
     var statusCode: Int {
-        if let response = self.response {
+        if let response = _httpResponse {
             return response.statusCode
         }
-        return -1 // Unknown response code.
+        return HTTPStatusCode.unknownStatus.rawValue // Unknown response code.
     }
     
 }

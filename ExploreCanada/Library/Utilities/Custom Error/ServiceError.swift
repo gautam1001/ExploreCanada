@@ -10,15 +10,22 @@ import Foundation
 
 enum ServiceError: Error {
     case notInitialized
-    case custom(String)
+    case jsonSerialize
+    case badUrl
+    case other(String)
 }
 extension ServiceError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .notInitialized:
             return NSLocalizedString("Fact service not initialized", comment: "Fact service not initialized")
-        case .custom(let message):
+        case .badUrl:
+            return NSLocalizedString("Bad url", comment: "Bad url")
+        case .jsonSerialize:
+            return NSLocalizedString("Json encoding error", comment: "")
+        case .other(let message):
             return NSLocalizedString(message, comment: "")
+            
         }
     }
 }

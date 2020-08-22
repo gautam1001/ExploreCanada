@@ -8,7 +8,7 @@
 import Foundation
 
 /// HTTP Status Code (RFC 2616)
-public enum HTTPStatusCode: Int {
+enum HTTPStatusCode: Int {
     case `continue` = 100,
     switchingProtocols = 101
     

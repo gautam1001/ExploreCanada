@@ -13,7 +13,7 @@ public enum HTTPRequestErrorCode: Int {
     case httpResultError = 60 // API result error (eg: Invalid username and password).
 }
 
-final class HTTPRequestManager: NSObject, URLSessionDelegate{
+ class HTTPRequestManager: NSObject, URLSessionDelegate{
     fileprivate lazy var urlSession: URLSession = {
         let operationQueue = OperationQueue()
         operationQueue.qualityOfService = .userInteractive
@@ -41,11 +41,11 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
      */
     func performRequest(_ request: URLRequest, info _: NSDictionary? = nil, completionHandler: @escaping (_ response: Response) -> Void) {
         guard isNetworkAvaiblable() else {
-            let response = Response(request, nil, nil, error: NetworkError.reachability(string: "No internet"))
+            let response = Response(request, nil, nil, error: NetworkError.reachability)
             completionHandler(response)
             return // do not proceed if user is not connected to internet
         }
-        performSessionDataTaskWithRequest(request, completionHandler: completionHandler)
+        dataTaskWithRequest(request, completionHandler: completionHandler)
     }
     
     /**
@@ -55,13 +55,12 @@ final class HTTPRequestManager: NSObject, URLSessionDelegate{
      - parameter userInfo:          user information
      - parameter completionHandler: completion handler
      */
-    fileprivate func performSessionDataTaskWithRequest(_ request: URLRequest, completionHandler: @escaping (_ response: Response) -> Void) {
+    fileprivate func dataTaskWithRequest(_ request: URLRequest, completionHandler: @escaping (_ response: Response) -> Void) {
         addRequestURL(request.url!)
         urlSession.dataTask(with: request, completionHandler: { data, response, error in
             //var responseError: Error? = error
             var apiResponse: Response
             apiResponse = Response(request, response as? HTTPURLResponse, data, error: error)
-            
             self.removeRequestedURL(request.url!)
             DispatchQueue.main.async(execute: { () -> Void in
                 completionHandler(apiResponse)

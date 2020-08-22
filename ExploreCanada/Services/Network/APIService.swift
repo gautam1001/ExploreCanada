@@ -30,22 +30,22 @@ extension APIService {
         return true
     }
 
-    func performRequest(_ request: RequestBuilder, completion: @escaping (_ result: Result<Data,NetworkError>) -> Void) {
-           guard let url = request.url else {return}
-           let httpRequest = URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as NSDictionary?)
-           guard let _ = httpRequest.url else {
-               return completion(.failure(.badUrl(string: "Bad url")))
-           }
-           httpClient.performRequest(httpRequest) { response in
-               if response.statusCode == HTTPStatusCode.requestTimeout.rawValue {
-                   completion(.failure(.requestTimedOut(string: "Request timed out")))
-               } else if let error = response.error{
-                   completion(.failure(.other(string: error.localizedDescription)))
-               } else if let responsedata = response.data {
-                   completion(.success(responsedata))
-               }
-           }
-       }
+    func performRequest(_ request: RequestBuilder, completion: @escaping (_ result: Result<Data,Error>) -> Void) {
+        guard let url = request.url else {return completion(.failure(ServiceError.badUrl))}
+        do {
+            let httpRequest = try URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as Dictionary?)
+            httpClient.performRequest(httpRequest) { response in
+                if let error = response.error{
+                    completion(.failure(NetworkError.other(string: error.localizedDescription)))
+                } else if let responsedata = response.data {
+                    completion(.success(responsedata))
+                }
+            }
+        }catch let error {
+            completion(.failure(error))
+        }
+    }
+
     
     func cancel(_ request: RequestBuilder) {
         guard let url = URL(string: request.path) else { return }

@@ -37,7 +37,7 @@ extension URLRequest {
 
      - returns: NSMutableURLRequest object.
      */
-    static func requestWithURL(_ url: URL, method: HTTPRequestMethod = .POST, jsonDictionary: NSDictionary?) -> URLRequest {
+    static func requestWithURL(_ url: URL, method: HTTPRequestMethod = .POST, jsonDictionary: Dictionary<String, Any>?) throws ->  URLRequest {
         var mutableURLRequest: URLRequest = URLRequest(url: url)
         // Set the timeout interval of the receiver.
         mutableURLRequest.timeoutInterval = URLRequest.requestTimeoutInterval()
@@ -55,7 +55,7 @@ extension URLRequest {
                 let data: Data = try JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
                 mutableURLRequest.httpBody = data // Okay, the `json` is here, let's get the value for 'success' out of it
             } catch let serializeError {
-                print("Error could not parse JSON.\n \(serializeError)") // Log the error thrown by `JSONObjectWithData`
+                throw ServiceError.other(serializeError.localizedDescription)
             }
         }
         return mutableURLRequest

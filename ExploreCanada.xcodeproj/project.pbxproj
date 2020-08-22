@@ -265,8 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				8F1E073224E9518500E00AA0 /* FactsService.swift */,
-				8F1E070924E7C33F00E00AA0 /* Reachability.swift */,
 				8F1E070024E7BFFA00E00AA0 /* APIService.swift */,
+				8F1E070924E7C33F00E00AA0 /* Reachability.swift */,
 				8F1E06FE24E7BFFA00E00AA0 /* HTTPRequestManager.swift */,
 				8F1E06F724E7BBDE00E00AA0 /* RequestBuilder.swift */,
 				8F1E06FA24E7BFF900E00AA0 /* Response.swift */,

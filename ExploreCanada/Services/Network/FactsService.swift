@@ -22,7 +22,7 @@ final class FactService: FactServiceProtocol {
     func fetch(_ handler:@escaping CompletionHandler){
         responseHandler = handler
         guard let _request = self.requestBuilder else {
-            responseHandler?(.failure(ServiceError.custom("Request not created for the fetching facts.")))
+            responseHandler?(.failure(ServiceError.other("Request not created for the fetching facts.")))
             return
         }
         APIService.shared.performRequest(_request) { [weak self] result in
