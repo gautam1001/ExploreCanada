@@ -8,11 +8,7 @@
 import Foundation
 extension URLComponents {
     
-    mutating func setQueryItems(with parameters: [String: Any]) {
-        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value as? String) }
-    }
-    
-    mutating func setQueryItems(with parameters: NSDictionary) {
-        self.queryItems = parameters.map { URLQueryItem(name: $0.key as! String, value:"\($0.value)") }
+    mutating func setQueryItems(with parameters: Dictionary<String,Any>) {
+        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value as? String ?? "") }
     }
 }

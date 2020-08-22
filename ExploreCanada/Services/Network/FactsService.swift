@@ -25,6 +25,7 @@ final class FactService: FactServiceProtocol {
             responseHandler?(.failure(ServiceError.other("Request not created for the fetching facts.")))
             return
         }
+        self.cancel()
         APIService.shared.performRequest(_request) { [weak self] result in
             switch result {
             case .success(let data):

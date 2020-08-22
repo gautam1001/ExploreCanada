@@ -34,6 +34,7 @@ extension APIService {
         guard let url = request.url else {return completion(.failure(ServiceError.badUrl))}
         do {
             let httpRequest = try URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as Dictionary?)
+            
             httpClient.performRequest(httpRequest) { response in
                 if let error = response.error{
                     completion(.failure(NetworkError.other(string: error.localizedDescription)))
@@ -50,9 +51,5 @@ extension APIService {
     func cancel(_ request: RequestBuilder) {
         guard let url = URL(string: request.path) else { return }
         httpClient.cancelRequestForURL(url)
-    }
-    
-    func cancelAllRequests(){
-        httpClient.cancelAllRequests()
     }
 }
