@@ -44,6 +44,12 @@
 		8F1E073724E96FBD00E00AA0 /* MockFactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E073624E96FBD00E00AA0 /* MockFactListViewModel.swift */; };
 		8F1E073B24E9725500E00AA0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E073A24E9725500E00AA0 /* ServiceError.swift */; };
 		8F1E073D24E97BE800E00AA0 /* FactServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E073C24E97BE800E00AA0 /* FactServiceTests.swift */; };
+		8F1E077624F12B7700E00AA0 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E077524F12B7700E00AA0 /* APIServiceTests.swift */; };
+		8FB375E724F19D060088FB5C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB375E624F19D060088FB5C /* MockURLSession.swift */; };
+		8FE748C724F139BA0035E556 /* MockApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE748C624F139BA0035E556 /* MockApiService.swift */; };
+		8FE748C924F17BAB0035E556 /* MockJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE748C824F17BAB0035E556 /* MockJson.swift */; };
+		8FE748CB24F17BDA0035E556 /* MockRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE748CA24F17BDA0035E556 /* MockRequestBuilder.swift */; };
+		8FE748CD24F17C0F0035E556 /* MockHTTPRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE748CC24F17C0F0035E556 /* MockHTTPRequestManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +113,12 @@
 		8F1E073624E96FBD00E00AA0 /* MockFactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFactListViewModel.swift; sourceTree = "<group>"; };
 		8F1E073A24E9725500E00AA0 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		8F1E073C24E97BE800E00AA0 /* FactServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactServiceTests.swift; sourceTree = "<group>"; };
+		8F1E077524F12B7700E00AA0 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
+		8FB375E624F19D060088FB5C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		8FE748C624F139BA0035E556 /* MockApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApiService.swift; sourceTree = "<group>"; };
+		8FE748C824F17BAB0035E556 /* MockJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJson.swift; sourceTree = "<group>"; };
+		8FE748CA24F17BDA0035E556 /* MockRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequestBuilder.swift; sourceTree = "<group>"; };
+		8FE748CC24F17C0F0035E556 /* MockHTTPRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHTTPRequestManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +185,9 @@
 			children = (
 				8F1E06C324E7151A00E00AA0 /* ExploreCanadaTests.swift */,
 				8F1E072D24E92D6C00E00AA0 /* FactsListViewModelTest.swift */,
-				8F1E073624E96FBD00E00AA0 /* MockFactListViewModel.swift */,
 				8F1E073C24E97BE800E00AA0 /* FactServiceTests.swift */,
+				8F1E077524F12B7700E00AA0 /* APIServiceTests.swift */,
+				8FB375E824F19E2E0088FB5C /* Mock */,
 				8F1E06C524E7151A00E00AA0 /* Info.plist */,
 			);
 			path = ExploreCanadaTests;
@@ -423,6 +436,19 @@
 			path = UITableView;
 			sourceTree = "<group>";
 		};
+		8FB375E824F19E2E0088FB5C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				8F1E073624E96FBD00E00AA0 /* MockFactListViewModel.swift */,
+				8FE748C624F139BA0035E556 /* MockApiService.swift */,
+				8FE748CC24F17C0F0035E556 /* MockHTTPRequestManager.swift */,
+				8FE748CA24F17BDA0035E556 /* MockRequestBuilder.swift */,
+				8FB375E624F19D060088FB5C /* MockURLSession.swift */,
+				8FE748C824F17BAB0035E556 /* MockJson.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -590,10 +616,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FE748C724F139BA0035E556 /* MockApiService.swift in Sources */,
 				8F1E072E24E92D6C00E00AA0 /* FactsListViewModelTest.swift in Sources */,
+				8FE748C924F17BAB0035E556 /* MockJson.swift in Sources */,
 				8F1E073724E96FBD00E00AA0 /* MockFactListViewModel.swift in Sources */,
 				8F1E06C424E7151A00E00AA0 /* ExploreCanadaTests.swift in Sources */,
+				8FE748CB24F17BDA0035E556 /* MockRequestBuilder.swift in Sources */,
+				8FB375E724F19D060088FB5C /* MockURLSession.swift in Sources */,
 				8F1E073D24E97BE800E00AA0 /* FactServiceTests.swift in Sources */,
+				8FE748CD24F17C0F0035E556 /* MockHTTPRequestManager.swift in Sources */,
+				8F1E077624F12B7700E00AA0 /* APIServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

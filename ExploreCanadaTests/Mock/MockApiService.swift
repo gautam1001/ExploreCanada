@@ -1,52 +1,59 @@
 //
-//  APIService.swift
+//  MockApiService.swift
+//  ExploreCanadaTests
 //
-//  Created by Prashant Gautam on 11/03/19.
-//  Copyright © 2019. All rights reserved.
+//  Created by Prashant on 22/08/20.
+//  Copyright © 2020 Prashant Gautam. All rights reserved.
 //
 
 import Foundation
+@testable import ExploreCanada
 
-public final class APIService {
-    private let httpClient: HTTPRequestManager
+class MockApiService {
+    
+    private let httpClient: MockHTTPRequestManager
+    
     // MARK: - Singleton Instance
-    class var shared: APIService {
+    class var shared: MockApiService {
         struct Singleton {
-            static let instance = APIService()
+            static let instance = MockApiService()
         }
         return Singleton.instance
     }
     
     private init() {
-        httpClient = HTTPRequestManager.shared
+        httpClient = MockHTTPRequestManager.shared
     }
-}
-
-extension APIService {
-
-    func performRequest(_ request: RequestBuilder, completion: @escaping (_ result: Result<Data,Error>) -> Void) {
+    
+    func setReachability(_ value:Bool){
+        httpClient.reachability.isReachable = value
+    }
+    
+    func performRequest(_ request: MockRequestBuilder, completion: @escaping (_ result: Result<Data,Error>) -> Void) {
         guard let url = request.url else {
             completion(.failure(ServiceError.badUrl))
             return
         }
         do {
             let httpRequest = try URLRequest.requestWithURL(url, method: request.method, jsonDictionary: request.parameters as Dictionary?)
-            
-            httpClient.performRequest(httpRequest) { response in
+            httpClient.needInvalidResponse = request == .getFactsInvalidJson
+            httpClient.performRequest(httpRequest) { (response) in
                 if let error = response.error{
                     completion(.failure(NetworkError.other(string: error.localizedDescription)))
                 } else if let responsedata = response.data {
                     completion(.success(responsedata))
                 }
             }
+            
         }catch let error {
             completion(.failure(error))
         }
     }
-
     
-    func cancel(_ request: RequestBuilder) {
-        guard let url = URL(string: request.path) else { return }
-        httpClient.cancelRequestForURL(url)
-    }
 }
+
+
+
+
+
+
