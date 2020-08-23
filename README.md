@@ -35,6 +35,7 @@ Open the project .xcodeproj in XCode and run the application on simulator.
  - ExploreCanadaTests
  - FactServiceTests
  - FactsListViewModelTest
+ - APIServiceTests
  
  You can run the tests one by one OR the whole test class as per your choice.
 
