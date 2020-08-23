@@ -13,6 +13,7 @@ protocol FactServiceProtocol{
     var requestBuilder:RequestBuilder? { get set }
     var responseHandler: CompletionHandler? { get set }
     func cancel()
+    
 }
 
 
@@ -20,6 +21,7 @@ protocol FactListServiceProtocol:ListServiceProtocol {
     var _aboutViewModel : AboutViewModel? { get set }
     var factService:FactService? { get set }
     init(service:FactService)
+    subscript(_ index: Int) -> FactViewModel? { get set }
 }
 
 extension FactListServiceProtocol {
@@ -30,5 +32,14 @@ extension FactListServiceProtocol {
     
     var count: Int {
         return _aboutViewModel?.factCounts ?? 0
+    }
+    //MARK: Getter setter for factviewmodel items in the list
+    subscript(_ index: Int) -> FactViewModel? {
+        get { return _aboutViewModel?[index] }
+        set {
+            if let value = newValue {
+                _aboutViewModel?[index] = value
+            }
+        }
     }
 }

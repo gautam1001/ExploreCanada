@@ -29,7 +29,7 @@ class FactsListViewModelTest: XCTestCase {
     /// Function to test for getting success response (mock)
     func testFetchFactsSuccess() {
         let expectation = XCTestExpectation(description: "Facts fetch")
-        self.listViewModel?._aboutViewModel = AboutViewModel(with: About(title: "About Canada", facts: []))
+        self.listViewModel?._aboutViewModel = AboutViewModel(with: MockJson.validJsonData()!)
         self.listViewModel?.fetchList { result in
             switch result {
             case .success( _): expectation.fulfill()
@@ -63,6 +63,20 @@ class FactsListViewModelTest: XCTestCase {
             }
         })
         wait(for: [expectation], timeout: 5.0)
+    }
+    
+    func testFactItemAtIndexFail() {
+           self.listViewModel?._aboutViewModel = AboutViewModel(with: MockJson.validJsonData()!)
+           //Since there are only two items in the list of facts the indexed element will be nil.
+           let factViewModel = self.listViewModel?[2]
+           XCTAssertNil(factViewModel, "No FactViewModel should be returned")
+       }
+    
+    func testFactItemAtIndexSuccess() {
+        self.listViewModel?._aboutViewModel = AboutViewModel(with: MockJson.validJsonData()!)
+        //Since there are only two items in the list of facts the indexed element will return a factviewmodel.
+        let factViewModel = self.listViewModel?[1]
+        XCTAssertNotNil(factViewModel, "FactViewModel should be returned")
     }
     
     func testPerformance() {

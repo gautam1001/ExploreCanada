@@ -27,4 +27,14 @@ final class MockFactListViewModel:FactListServiceProtocol {
             self.updateHandler?(.failure(NetworkError.other(string: "Unable to fetch facts")))
         }
     }
+//
+//    //MARK: Getter setter for factviewmodel items in the list
+//    subscript(_ index: Int) -> FactViewModel? {
+//        get { return _aboutViewModel?[index] }
+//        set {
+//            if let value = newValue {
+//                _aboutViewModel?[index] = value
+//            }
+//        }
+//    }
 }

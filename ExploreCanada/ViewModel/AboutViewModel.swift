@@ -55,7 +55,9 @@ class AboutViewModel {
     
     //MARK: Getter setter for fact items in the list
     subscript(_ index: Int) -> FactViewModel? {
-        get { return _factViewModels?[index] }
+        get {
+            return index < (_factViewModels?.count ?? 0) ? _factViewModels?[index] : nil
+        }
         set {
             if let value = newValue {
                 _factViewModels?[index] = value

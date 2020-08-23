@@ -35,15 +35,4 @@ class FactListViewModel:FactListServiceProtocol {
             }
         }
     }
-    
-    //MARK: Getter setter for factviewmodel items in the list
-    subscript(_ index: Int) -> FactViewModel? {
-        get { return _aboutViewModel?[index] }
-        set {
-            if let value = newValue {
-                _aboutViewModel?[index] = value
-            }
-        }
-    }
-    
 }
