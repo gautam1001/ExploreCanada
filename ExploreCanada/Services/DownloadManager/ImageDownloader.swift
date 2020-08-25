@@ -11,7 +11,7 @@ final class ImageDownloader:NSObject {
     
     private static let imageUrlSession: URLSession = {
         let operationQueue = OperationQueue()
-        operationQueue.qualityOfService = .background
+        operationQueue.qualityOfService = .userInitiated
         return URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: operationQueue)
     }()
     

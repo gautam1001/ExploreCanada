@@ -12,7 +12,7 @@ extension UIImageView {
     
     func setImage(with urlString: String) {
         guard let url = URL(string: urlString) else { return }
-        //image = nil
+        image = nil
         
         if let cachedImage = ImageDownloader.imageCache.object(forKey: urlString as AnyObject) {
             image = cachedImage as? UIImage
@@ -29,7 +29,6 @@ extension UIImageView {
             case .failure(_):
                 DispatchQueue.main.async() {
                     weakSelf.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
-                    weakSelf.image = UIImage(named: "noimage")
                 }
             }
         }
