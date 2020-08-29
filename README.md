@@ -8,6 +8,7 @@ This project shows the unknown facts about Canada in a list.
 - Facts list is populated through Json feed requested via **URLSession** network call.
 - **PullToRefresh** to refresh the facts list.
 - **No third party** code or dependency used.
+- Real time network reachability status
 - Unit Test Cases.
 
 ## Design Architecture 

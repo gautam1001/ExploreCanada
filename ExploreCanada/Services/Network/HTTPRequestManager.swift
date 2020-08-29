@@ -6,11 +6,12 @@
 //
 
 import UIKit
-
- class HTTPRequestManager: NSObject{
-    fileprivate lazy var reachability: Reachability? = {
-        return Reachability()
-    }()
+//import Reachability
+class HTTPRequestManager: NSObject{
+//    fileprivate lazy var reachability: Reachability? = {
+//        return try? Reachability()
+//    }()
+    
     fileprivate lazy var urlSession: URLSession = {
         let operationQueue = OperationQueue()
         operationQueue.qualityOfService = .userInteractive
@@ -110,8 +111,8 @@ extension HTTPRequestManager {
     
     /// Check for network availability
     func isNetworkAvaiblable() -> Bool {
-        if let reachability = self.reachability {
-            return reachability.isReachable
+        if let reachability = NetworkManager.shared.reachability {
+            return reachability.connection != .unavailable
         }
         return true
     }

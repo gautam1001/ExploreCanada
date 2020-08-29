@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1388C72FA3839567ECF69B6E /* Pods_ExploreCanadaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E51D9F5EDADD3F3B40CB50B2 /* Pods_ExploreCanadaTests.framework */; };
+		448E80578574C930757E68F1 /* Pods_ExploreCanada_ExploreCanadaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CA1B8A76C6F81457540E015 /* Pods_ExploreCanada_ExploreCanadaUITests.framework */; };
+		4830F28C24FAD6E70001BDA4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4830F28B24FAD6E70001BDA4 /* Reachability.swift */; };
+		48A804C824FA611500138DAE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A804C724FA611500138DAE /* NetworkManager.swift */; };
 		8F1E06AD24E7151800E00AA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06AC24E7151800E00AA0 /* AppDelegate.swift */; };
 		8F1E06AF24E7151800E00AA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06AE24E7151800E00AA0 /* SceneDelegate.swift */; };
 		8F1E06B124E7151800E00AA0 /* FactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06B024E7151800E00AA0 /* FactsViewController.swift */; };
@@ -27,7 +31,6 @@
 		8F1E070624E7BFFA00E00AA0 /* HTTPRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FE24E7BFFA00E00AA0 /* HTTPRequestManager.swift */; };
 		8F1E070724E7BFFA00E00AA0 /* URLRequest+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E06FF24E7BFFA00E00AA0 /* URLRequest+Addition.swift */; };
 		8F1E070824E7BFFA00E00AA0 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E070024E7BFFA00E00AA0 /* APIService.swift */; };
-		8F1E070A24E7C33F00E00AA0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E070924E7C33F00E00AA0 /* Reachability.swift */; };
 		8F1E070E24E7CAA500E00AA0 /* FactListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E070D24E7CAA500E00AA0 /* FactListViewModel.swift */; };
 		8F1E071024E7CFFA00E00AA0 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E070F24E7CFFA00E00AA0 /* JsonParser.swift */; };
 		8F1E071624E7F26A00E00AA0 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E071524E7F26A00E00AA0 /* AboutViewModel.swift */; };
@@ -70,6 +73,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4830F28B24FAD6E70001BDA4 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		48A804C724FA611500138DAE /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		8CA1B8A76C6F81457540E015 /* Pods_ExploreCanada_ExploreCanadaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExploreCanada_ExploreCanadaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1E06A924E7151800E00AA0 /* ExploreCanada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExploreCanada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1E06AC24E7151800E00AA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F1E06AE24E7151800E00AA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +102,6 @@
 		8F1E06FE24E7BFFA00E00AA0 /* HTTPRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestManager.swift; sourceTree = "<group>"; };
 		8F1E06FF24E7BFFA00E00AA0 /* URLRequest+Addition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+Addition.swift"; sourceTree = "<group>"; };
 		8F1E070024E7BFFA00E00AA0 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		8F1E070924E7C33F00E00AA0 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		8F1E070D24E7CAA500E00AA0 /* FactListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactListViewModel.swift; sourceTree = "<group>"; };
 		8F1E070F24E7CFFA00E00AA0 /* JsonParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		8F1E071524E7F26A00E00AA0 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
@@ -119,6 +124,8 @@
 		8FE748C824F17BAB0035E556 /* MockJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJson.swift; sourceTree = "<group>"; };
 		8FE748CA24F17BDA0035E556 /* MockRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequestBuilder.swift; sourceTree = "<group>"; };
 		8FE748CC24F17C0F0035E556 /* MockHTTPRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHTTPRequestManager.swift; sourceTree = "<group>"; };
+		DF5822E5688BA2CDE9CCDA14 /* Pods_ExploreCanada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExploreCanada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E51D9F5EDADD3F3B40CB50B2 /* Pods_ExploreCanadaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExploreCanadaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1388C72FA3839567ECF69B6E /* Pods_ExploreCanadaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,12 +148,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448E80578574C930757E68F1 /* Pods_ExploreCanada_ExploreCanadaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		486A046324FAC3D100236BE5 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				4830F28B24FAD6E70001BDA4 /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		551488842498C86F6194100A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF5822E5688BA2CDE9CCDA14 /* Pods_ExploreCanada.framework */,
+				8CA1B8A76C6F81457540E015 /* Pods_ExploreCanada_ExploreCanadaUITests.framework */,
+				E51D9F5EDADD3F3B40CB50B2 /* Pods_ExploreCanadaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8F1E06A024E7151800E00AA0 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +180,7 @@
 				8F1E06C224E7151A00E00AA0 /* ExploreCanadaTests */,
 				8F1E06CD24E7151A00E00AA0 /* ExploreCanadaUITests */,
 				8F1E06AA24E7151800E00AA0 /* Products */,
+				551488842498C86F6194100A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,6 +296,7 @@
 		8F1E06E324E7194E00E00AA0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				486A046324FAC3D100236BE5 /* Reachability */,
 				8F1E06E424E7196500E00AA0 /* Network */,
 				8F1E071924E8005B00E00AA0 /* DownloadManager */,
 			);
@@ -277,9 +306,9 @@
 		8F1E06E424E7196500E00AA0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				48A804C724FA611500138DAE /* NetworkManager.swift */,
 				8F1E073224E9518500E00AA0 /* FactsService.swift */,
 				8F1E070024E7BFFA00E00AA0 /* APIService.swift */,
-				8F1E070924E7C33F00E00AA0 /* Reachability.swift */,
 				8F1E06FE24E7BFFA00E00AA0 /* HTTPRequestManager.swift */,
 				8F1E06F724E7BBDE00E00AA0 /* RequestBuilder.swift */,
 				8F1E06FA24E7BFF900E00AA0 /* Response.swift */,
@@ -473,6 +502,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F1E06D624E7151A00E00AA0 /* Build configuration list for PBXNativeTarget "ExploreCanadaTests" */;
 			buildPhases = (
+				4AFA54902544D8A2DDE550CE /* [CP] Check Pods Manifest.lock */,
 				8F1E06BB24E7151A00E00AA0 /* Sources */,
 				8F1E06BC24E7151A00E00AA0 /* Frameworks */,
 				8F1E06BD24E7151A00E00AA0 /* Resources */,
@@ -491,6 +521,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F1E06D924E7151A00E00AA0 /* Build configuration list for PBXNativeTarget "ExploreCanadaUITests" */;
 			buildPhases = (
+				5E91510B20084A999502D572 /* [CP] Check Pods Manifest.lock */,
 				8F1E06C624E7151A00E00AA0 /* Sources */,
 				8F1E06C724E7151A00E00AA0 /* Frameworks */,
 				8F1E06C824E7151A00E00AA0 /* Resources */,
@@ -574,6 +605,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4AFA54902544D8A2DDE550CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExploreCanadaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E91510B20084A999502D572 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExploreCanada-ExploreCanadaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8F1E06A524E7151800E00AA0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -597,6 +675,8 @@
 				8F1E06F624E7BA0900E00AA0 /* Fact.swift in Sources */,
 				8F1E071624E7F26A00E00AA0 /* AboutViewModel.swift in Sources */,
 				8F1E06B124E7151800E00AA0 /* FactsViewController.swift in Sources */,
+				4830F28C24FAD6E70001BDA4 /* Reachability.swift in Sources */,
+				48A804C824FA611500138DAE /* NetworkManager.swift in Sources */,
 				8F1E071024E7CFFA00E00AA0 /* JsonParser.swift in Sources */,
 				8F1E070224E7BFFA00E00AA0 /* Response.swift in Sources */,
 				8F1E070724E7BFFA00E00AA0 /* URLRequest+Addition.swift in Sources */,
@@ -605,7 +685,6 @@
 				8F1E071B24E8007700E00AA0 /* ImageDownloader.swift in Sources */,
 				8F1E06AD24E7151800E00AA0 /* AppDelegate.swift in Sources */,
 				8F1E072924E8329400E00AA0 /* FactsTableView.swift in Sources */,
-				8F1E070A24E7C33F00E00AA0 /* Reachability.swift in Sources */,
 				8F1E06EC24E7233F00E00AA0 /* UIImageView+Layer.swift in Sources */,
 				8F1E06AF24E7151800E00AA0 /* SceneDelegate.swift in Sources */,
 				8F1E070524E7BFFA00E00AA0 /* URLComponents+Addition.swift in Sources */,
@@ -783,6 +862,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TC3335K9Y9;
 				INFOPLIST_FILE = "${PRODUCT_NAME}/Resources/Plists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -801,6 +881,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TC3335K9Y9;
 				INFOPLIST_FILE = "${PRODUCT_NAME}/Resources/Plists/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

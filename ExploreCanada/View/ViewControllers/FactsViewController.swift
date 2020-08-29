@@ -23,6 +23,20 @@ class FactsViewController: UIViewController {
         super.viewDidLoad()
         self.listViewModel = FactListViewModel(service: FactService(request: RequestBuilder.getFacts))
         self.fetchFacts()
+        self.networkStatus()
+    }
+    
+    private func networkStatus(){
+        NetworkManager.shared.start()
+        NetworkManager.shared.statusChanged { [weak self] reachability in
+            let status = reachability.connection
+            switch status {
+            case .unavailable, .none:
+                print("The network is not reachable")
+                self?.showErrorAlert(NetworkError.reachability)
+            default: print("")
+            }
+        }
     }
     
     //MARK:  Helper Methods
